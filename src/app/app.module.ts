@@ -7,15 +7,21 @@ import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
 import {LoginComponent} from './login/login.component';
 import {ErrorComponent} from './error/error.component';
-import {ProfileComponent} from './profile/profile.component';
+import {ProfileComponent} from './master-page/pages/profile/profile.component';
 import {AppRoutingModule} from './app-routing.module';
+import { MenuComponent } from './master-page/menu/menu.component';
+import { MasterPageComponent } from './master-page/master-page.component';
+import { FaqComponent } from './master-page/pages/faq/faq.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
         ErrorComponent,
-        ProfileComponent
+        ProfileComponent,
+        MenuComponent,
+        MasterPageComponent,
+        FaqComponent
     ],
     imports: [
         BrowserModule,
