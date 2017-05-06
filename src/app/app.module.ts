@@ -8,6 +8,7 @@ import {SharedModule} from './shared/shared.module';
 import {LoginComponent} from './login/login.component';
 import {ErrorComponent} from './error/error.component';
 import {ProfileComponent} from './profile/profile.component';
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,11 @@ import {ProfileComponent} from './profile/profile.component';
         BrowserModule,
         FormsModule,
         HttpModule,
+        AppRoutingModule,
         SharedModule
+    ],
+    exports: [
+
     ],
     providers: [],
     bootstrap: [AppComponent]
