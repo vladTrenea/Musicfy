@@ -9,9 +9,11 @@ import {LoginComponent} from './login/login.component';
 import {ErrorComponent} from './error/error.component';
 import {ProfileComponent} from './master-page/pages/profile/profile.component';
 import {AppRoutingModule} from './app-routing.module';
-import { MenuComponent } from './master-page/menu/menu.component';
-import { MasterPageComponent } from './master-page/master-page.component';
-import { FaqComponent } from './master-page/pages/faq/faq.component';
+import {MenuComponent} from './master-page/menu/menu.component';
+import {MasterPageComponent} from './master-page/master-page.component';
+import {FaqComponent} from './master-page/pages/faq/faq.component';
+import {ArtistsModule} from './master-page/pages/artists/artists.module';
+import {SongsModule} from './master-page/pages/songs/songs.module';
 
 @NgModule({
     declarations: [
@@ -28,11 +30,11 @@ import { FaqComponent } from './master-page/pages/faq/faq.component';
         FormsModule,
         HttpModule,
         AppRoutingModule,
-        SharedModule
+        SharedModule,
+        ArtistsModule,
+        SongsModule
     ],
-    exports: [
-
-    ],
+    exports: [],
     providers: [],
     bootstrap: [AppComponent]
 })

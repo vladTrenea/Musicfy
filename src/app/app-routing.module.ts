@@ -5,6 +5,7 @@ import {LoginComponent} from './login/login.component';
 import {ProfileComponent} from './master-page/pages/profile/profile.component';
 import {MasterPageComponent} from './master-page/master-page.component';
 import {FaqComponent} from './master-page/pages/faq/faq.component';
+import {AuthGuard} from './shared/guards/auth.guard';
 
 const routes: Routes = [
     {
@@ -21,7 +22,8 @@ const routes: Routes = [
             },
             {
                 path: 'artists',
-                loadChildren: 'app/artists/artists.module#ArtistsModule'
+                loadChildren: 'app/artists/artists.module#ArtistsModule',
+                canActivate: [AuthGuard]
             },
             {
                 path: 'songs',
