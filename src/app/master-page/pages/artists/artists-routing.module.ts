@@ -28,8 +28,8 @@ const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: '/artists/list',
-        pathMatch: 'full'
+        redirectTo: 'list',
+        pathMatch: 'prefix'
     }
 ];
 

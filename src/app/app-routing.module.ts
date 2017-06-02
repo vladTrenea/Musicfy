@@ -22,12 +22,13 @@ const routes: Routes = [
             },
             {
                 path: 'artists',
-                loadChildren: 'app/artists/artists.module#ArtistsModule',
+                loadChildren: 'app/master-page/pages/artists/artists.module#ArtistsModule',
                 canActivate: [AuthGuard]
             },
             {
                 path: 'songs',
-                loadChildren: 'app/songs/songs.module#SongsModule'
+                loadChildren: 'app/master-page/pages/songs/songs.module#SongsModule',
+                canActivate: [AuthGuard]
             },
             {
                 path: 'faq',

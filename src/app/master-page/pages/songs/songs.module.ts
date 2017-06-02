@@ -1,10 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+
+import {AddSongComponent} from './add-song/add-song.component';
+import {EditSongComponent} from './edit-song/edit-song.component';
+import {ViewSongComponent} from './view-song/view-song.component';
+import {ListSongComponent} from './list-song/list-song.component';
+import {SharedModule} from '../../../shared/shared.module';
+import {SongsRoutingModule} from './songs-routing.module';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: []
+    imports: [
+        CommonModule,
+        SharedModule,
+        SongsRoutingModule
+    ],
+    declarations: [AddSongComponent, EditSongComponent, ViewSongComponent, ListSongComponent]
 })
-export class SongsModule { }
+export class SongsModule {
+}

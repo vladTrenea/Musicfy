@@ -8,6 +8,4 @@ export class AuthFacade {
     constructor(private authService: AuthService, private storageService: StorageService) {
 
     }
-
-
 }
