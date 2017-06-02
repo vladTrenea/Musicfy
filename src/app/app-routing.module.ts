@@ -6,11 +6,16 @@ import {ProfileComponent} from './master-page/pages/profile/profile.component';
 import {MasterPageComponent} from './master-page/master-page.component';
 import {FaqComponent} from './master-page/pages/faq/faq.component';
 import {AuthGuard} from './shared/guards/auth.guard';
+import {ErrorComponent} from './error/error.component';
 
 const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'error/:id',
+        component: ErrorComponent
     },
     {
         path: '',
@@ -43,7 +48,7 @@ const routes: Routes = [
     },
     {
         path: '**',
-        redirectTo: '/error/notFound',
+        redirectTo: '/error/404',
         pathMatch: 'full'
     }
 ];

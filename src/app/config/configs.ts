@@ -4,7 +4,8 @@ const apiBaseUrl = environment.apiUrl;
 
 export const config = {
     apiEndpoints: {
-        loginEndpoint: `${apiBaseUrl}/account/login`
+        loginEndpoint: `${apiBaseUrl}/account/login`,
+        logoutEndpoint: `${apiBaseUrl}/account/logout`
     },
     headers: {
         tokenHeaderName: 'X-Auth-Token',
@@ -19,5 +20,10 @@ export const config = {
         forbidden: 403,
         notFound: 404,
         internalServerError: 500
+    },
+    errorMessages: {
+        403: 'Forbidden',
+        404: 'Not Found',
+        500: 'Internal Server Error'
     }
 };
