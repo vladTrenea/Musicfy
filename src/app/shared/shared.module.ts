@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 import {Http, RequestOptions, XHRBackend} from '@angular/http';
 
 import {AuthGuard} from './guards/auth.guard';
@@ -10,6 +11,7 @@ import {BaseService} from './services/base.service';
 import {StorageService} from './services/storage.service';
 import {HttpInterceptor} from './interceptors/http.interceptor';
 import {AdminGuard} from './guards/admin.guard';
+import {EmptyValidator} from './validators/empty-validator.directive';
 
 export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOptions, router: Router) {
     return new HttpInterceptor(backend, defaultOptions, router);
@@ -17,9 +19,10 @@ export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOpti
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        FormsModule
     ],
-    declarations: [],
+    declarations: [EmptyValidator],
     providers: [AuthGuard,
         AdminGuard,
         AuthFacade,
@@ -31,6 +34,10 @@ export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOpti
         },
         AuthService,
         StorageService
+    ],
+    exports: [
+        FormsModule,
+        EmptyValidator
     ]
 })
 export class SharedModule {

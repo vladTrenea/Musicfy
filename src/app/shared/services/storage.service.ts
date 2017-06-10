@@ -13,6 +13,10 @@ export class StorageService {
         return JSON.parse(localStorage.getItem(config.localStorageKeys.userAuthorization));
     }
 
+    setUserAuthorization(authorization: UserAuthorization) {
+        localStorage.setItem(config.localStorageKeys.userAuthorization, JSON.stringify(authorization));
+    }
+
     removeUserAuthorization() {
         localStorage.removeItem(config.localStorageKeys.userAuthorization);
     }

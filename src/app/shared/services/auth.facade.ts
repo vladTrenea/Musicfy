@@ -12,7 +12,11 @@ export class AuthFacade {
     }
 
     login(login: LoginModel): Observable<UserAuthorization> {
-        return this.authService.login(login);
+        return this.authService.login(login).map((response: UserAuthorization) => {
+            this.storageService.setUserAuthorization(response);
+
+            return response;
+        });
     }
 
     logout(): Observable<any> {
