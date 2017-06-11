@@ -5,10 +5,11 @@ import {Observable} from 'rxjs/Observable';
 
 import {config} from '../../config/configs';
 import {Error} from '../models/error.model';
+import {StorageService} from './storage.service';
 
 @Injectable()
 export class BaseService {
-    constructor(protected http: Http, protected router: Router) {
+    constructor(protected http: Http, protected router: Router, protected storageService: StorageService) {
     }
 
     protected handleError(err: Response) {
@@ -18,8 +19,7 @@ export class BaseService {
             this.router.navigate(['/error', err.status]);
 
             return;
-        }
-        else if (err.status === config.statusCodes.unauthorized && this.router.url !== '/login') {
+        } else if (err.status === config.statusCodes.unauthorized && this.router.url !== '/login') {
             localStorage.removeItem(config.localStorageKeys.userAuthorization);
             this.router.navigate(['/login']);
 
@@ -34,15 +34,16 @@ export class BaseService {
         });
     }
 
-    protected createAuthRequestOptions(token: string): RequestOptions {
+    protected createAuthRequestOptions(): RequestOptions {
         const requestOpt = new RequestOptions();
-        requestOpt.headers = this.getAuthHeader(token);
+        const authToken = this.storageService.getUserAuthorization().token;
+        requestOpt.headers = this.getAuthHeader(authToken);
 
         return requestOpt;
     }
 
     private getAuthHeader(token: string): Headers {
-        let header = new Headers();
+        const header = new Headers();
         header.set(config.headers.tokenHeaderName, token);
 
         return header;

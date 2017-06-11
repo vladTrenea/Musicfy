@@ -10,7 +10,12 @@ export class AuthGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        //verify if auth token is present
+        const authorization = this.authFacade.getCurrentUserAuthorization();
+        if (authorization === null) {
+            this.router.navigate(['/login']);
+
+            return false;
+        }
 
         return true;
     }

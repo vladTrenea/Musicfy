@@ -5,7 +5,9 @@ const apiBaseUrl = environment.apiUrl;
 export const config = {
     apiEndpoints: {
         loginEndpoint: `${apiBaseUrl}/account/login`,
-        logoutEndpoint: `${apiBaseUrl}/account/logout`
+        logoutEndpoint: `${apiBaseUrl}/account/logout`,
+        artistsEndpoint: `${apiBaseUrl}/artists`,
+        songsEndpoint: `${apiBaseUrl}/songs`
     },
     headers: {
         tokenHeaderName: 'X-Auth-Token',

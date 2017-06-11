@@ -7,6 +7,8 @@ import {ViewArtistComponent} from './view-artist/view-artist.component';
 import {ListArtistComponent} from './list-artist/list-artist.component';
 import {SharedModule} from '../../../shared/shared.module';
 import {ArtistsRoutingModule} from './artists-routing.module';
+import {ArtistsFacade} from './services/artists.facade';
+import {ArtistsService} from './services/artists.service';
 
 @NgModule({
     imports: [
@@ -14,7 +16,8 @@ import {ArtistsRoutingModule} from './artists-routing.module';
         SharedModule,
         ArtistsRoutingModule
     ],
-    declarations: [AddArtistComponent, EditArtistComponent, ViewArtistComponent, ListArtistComponent]
+    declarations: [AddArtistComponent, EditArtistComponent, ViewArtistComponent, ListArtistComponent],
+    providers: [ArtistsFacade, ArtistsService]
 })
 export class ArtistsModule {
 }

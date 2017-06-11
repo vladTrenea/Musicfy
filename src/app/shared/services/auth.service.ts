@@ -7,11 +7,12 @@ import {BaseService} from './base.service';
 import {UserAuthorization} from '../models/user-authorization.model';
 import {LoginModel} from '../models/login.model';
 import {config} from '../../config/configs';
+import {StorageService} from './storage.service';
 
 @Injectable()
 export class AuthService extends BaseService {
-    constructor(http: Http, router: Router) {
-        super(http, router);
+    constructor(http: Http, router: Router, storageService: StorageService) {
+        super(http, router, storageService);
     }
 
     login(login: LoginModel): Observable<UserAuthorization> {
@@ -21,7 +22,9 @@ export class AuthService extends BaseService {
     }
 
     logout(): Observable<any> {
-        return this.http.post(config.apiEndpoints.logoutEndpoint, '')
+        const requestOpt = this.createAuthRequestOptions();
+
+        return this.http.post(config.apiEndpoints.logoutEndpoint, requestOpt)
             .catch(err => this.handleError(err));
     }
 }

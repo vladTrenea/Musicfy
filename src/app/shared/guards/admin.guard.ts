@@ -10,7 +10,12 @@ export class AdminGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        //verify if user is admin
+        const authorization = this.authFacade.getCurrentUserAuthorization();
+        if (authorization === null || !authorization.isAdmin) {
+            this.router.navigate(['/login']);
+
+            return false;
+        }
 
         return true;
     }
