@@ -1,0 +1,34 @@
+<div class="container">
+    <div id="login-box">
+        <div class="logo">
+            <img src="./assets/img/musicfy-logo.png" class="img img-responsive img-circle center-block"/>
+            <h1 class="logo-caption"><span class="tweak">L</span>ogin</h1>
+        </div><!-- /.logo -->
+        <div class="controls">
+            <form #loginForm="ngForm" (keyup.enter)="login(loginForm.form.valid)" novalidate>
+                <input #username="ngModel" id="username" type="text" name="username" class="form-control"
+                       placeholder="Username" [(ngModel)]="loginModel.username" notEmpty/>
+                <div class="input-error" *ngIf="formSubmitted && username.errors">
+                    Username is required
+                </div>
+                <br/>
+
+                <input #password="ngModel" id="password" type="password" name="password" class="form-control"
+                       placeholder="Password" [(ngModel)]="loginModel.password" notEmpty/>
+                <div class="input-error" *ngIf="formSubmitted && password.errors">
+                    Password is required
+                </div>
+                <br/>
+
+                <button type="button" class="btn btn-default btn-block btn-custom" (click)="login(loginForm.form.valid)">
+                    Login
+                </button>
+                <br/>
+
+                <div class="input-error" *ngIf="errorMessage">
+                    {{errorMessage}}
+                </div>
+            </form>
+        </div><!-- /.controls -->
+    </div><!-- /#login-box -->
+</div><!-- /.container -->
