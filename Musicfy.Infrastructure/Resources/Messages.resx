@@ -126,6 +126,9 @@
   <data name="InvalidLogin" xml:space="preserve">
     <value>Invalid username or password</value>
   </data>
+  <data name="InvalidPaginationInput" xml:space="preserve">
+    <value>Invalid pagination input</value>
+  </data>
   <data name="PasswordRequired" xml:space="preserve">
     <value>Password is required</value>
   </data>

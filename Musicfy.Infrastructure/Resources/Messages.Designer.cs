@@ -88,6 +88,15 @@ namespace Musicfy.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid pagination input.
+        /// </summary>
+        public static string InvalidPaginationInput {
+            get {
+                return ResourceManager.GetString("InvalidPaginationInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password is required.
         /// </summary>
         public static string PasswordRequired {
