@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {Http} from '@angular/http';
+import {Http, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
 import {BaseService} from '../../../../shared/services/base.service';
@@ -15,8 +15,11 @@ export class ArtistsService extends BaseService {
         super(http, router, storageService);
     }
 
-    getAll(): Observable<ArtistModel[]> {
+    get(pageNumber: number): Observable<ArtistModel[]> {
         const requestOpt = this.createAuthRequestOptions();
+        const params: URLSearchParams = new URLSearchParams();
+        params.set('pageNumber', pageNumber.toString());
+        requestOpt.params = params;
 
         return this.http.get(config.apiEndpoints.artistsEndpoint, requestOpt)
             .map(response => response.json() as ArtistModel[])

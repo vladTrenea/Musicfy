@@ -28,7 +28,7 @@ export class LoginComponent {
                     this.router.navigate(['/songs']);
                 },
                 error => {
-                    this.errorMessage = error.message;
+                    this.errorMessage = error.Message;
                 });
         }
     }

@@ -9,8 +9,8 @@ export class ArtistsFacade {
     constructor(private artistsService: ArtistsService) {
     }
 
-    getAll(): Observable<ArtistModel[]> {
-        return this.artistsService.getAll();
+    getArtists(pageNumber: number): Observable<ArtistModel[]> {
+        return this.artistsService.get(pageNumber);
     }
 
     add(artist: ArtistModel): Observable<Response> {
