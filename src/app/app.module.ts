@@ -14,6 +14,7 @@ import {MasterPageComponent} from './master-page/master-page.component';
 import {FaqComponent} from './master-page/pages/faq/faq.component';
 import {ArtistsModule} from './master-page/pages/artists/artists.module';
 import {SongsModule} from './master-page/pages/songs/songs.module';
+import {AppSharedService} from './shared/services/app-shared.service';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,7 @@ import {SongsModule} from './master-page/pages/songs/songs.module';
         SongsModule
     ],
     exports: [],
-    providers: [],
+    providers: [AppSharedService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {ArtistModel} from '../models/artist.model';
 import {ArtistsFacade} from '../services/artists.facade';
+import {AppSharedService} from '../../../../shared/services/app-shared.service';
+import {PageChangeEvent} from '../../../../shared/models/page-change-event.model';
 
 @Component({
     selector: 'app-list-artist',
@@ -13,8 +15,10 @@ export class ListArtistComponent implements OnInit {
 
     artists: ArtistModel[] = [];
 
-    constructor(private artistsFacade: ArtistsFacade,
+    constructor(private sharedService: AppSharedService,
+                private artistsFacade: ArtistsFacade,
                 private route: ActivatedRoute) {
+        sharedService.emitPageChange(new PageChangeEvent('Artists', 'List'));
     }
 
     ngOnInit() {
