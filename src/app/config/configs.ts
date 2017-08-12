@@ -23,6 +23,18 @@ export const config = {
         notFound: 404,
         internalServerError: 500
     },
+    breadcrumb: {
+        subSections: {
+            add: 'add',
+            edit: 'edit',
+            list: 'list',
+            view: 'view'
+        },
+        sections: {
+            artists: 'Artists',
+            songs: 'Songs'
+        }
+    },
     errorMessages: {
         403: 'Forbidden',
         404: 'Not Found',

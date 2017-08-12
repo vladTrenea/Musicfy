@@ -7,6 +7,7 @@ import {BaseService} from '../../../../shared/services/base.service';
 import {StorageService} from '../../../../shared/services/storage.service';
 import {config} from '../../../../config/configs';
 import {ArtistModel} from '../models/artist.model';
+import {PaginationModel} from '../../../../shared/models/pagination.model';
 
 @Injectable()
 export class ArtistsService extends BaseService {
@@ -15,7 +16,7 @@ export class ArtistsService extends BaseService {
         super(http, router, storageService);
     }
 
-    get(pageNumber: number): Observable<ArtistModel[]> {
+    get(pageNumber: number): Observable<PaginationModel<ArtistModel>> {
         const requestOpt = this.createAuthRequestOptions();
         const params: URLSearchParams = new URLSearchParams();
         params.set('pageNumber', pageNumber.toString());
@@ -26,10 +27,19 @@ export class ArtistsService extends BaseService {
             .catch(error => this.handleError(error));
     }
 
+    getById(id: string): Observable<ArtistModel> {
+        const requestOpt = this.createAuthRequestOptions();
+        const url = `${config.apiEndpoints.artistsEndpoint}/${id}`;
+
+        return this.http.get(url, requestOpt)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
+    }
+
     add(artist: ArtistModel): Observable<Response> {
         const requestOpt = this.createAuthRequestOptions();
 
-        return this.http.post(config.apiEndpoints.artistsEndpoint, requestOpt)
+        return this.http.post(config.apiEndpoints.artistsEndpoint, JSON.stringify(artist), requestOpt)
             .map(response => response.json())
             .catch(error => this.handleError(error));
     }
@@ -37,7 +47,7 @@ export class ArtistsService extends BaseService {
     update(id: string, artist: ArtistModel): Observable<Response> {
         const requestOpt = this.createAuthRequestOptions();
 
-        return this.http.put(`${config.apiEndpoints.artistsEndpoint}/${id}`, requestOpt)
+        return this.http.put(`${config.apiEndpoints.artistsEndpoint}/${id}`, JSON.stringify(artist), requestOpt)
             .map(response => response.json())
             .catch(error => this.handleError(error));
     }

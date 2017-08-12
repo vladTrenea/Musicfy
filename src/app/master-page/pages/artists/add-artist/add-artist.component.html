@@ -1,3 +1,32 @@
-<p>
-  add-artist works!
-</p>
+<form #addArtistForm="ngForm" novalidate>
+    <div class="row">
+        <fieldset class="form-group col-lg-8">
+            <label class="ng-tns-c24-2">Name</label>
+            <input #name="ngModel" class="form-control" type="text" id="name" name="name"
+                   [(ngModel)]="artist.name" notEmpty>
+            <div class="input-error" *ngIf="formSubmitted && name.errors">
+                Name is required
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-lg-8">
+            <label>Description</label>
+            <textarea #description="ngModel" class="form-control" name="description" rows="3"
+                      [(ngModel)]="artist.description" notEmpty>
+            </textarea>
+            <div class="input-error" *ngIf="formSubmitted && description.errors">
+                Description is required
+            </div>
+            <div class="input-error" *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+        </div>
+    </div>
+
+    <div clas="row">
+        <button class="btn btn-primary" type="button" (click)="addArtist(addArtistForm.form.valid)">Save</button>
+        <button class="btn btn-danger" type="button" (click)="goToList()">Cancel</button>
+    </div>
+</form>

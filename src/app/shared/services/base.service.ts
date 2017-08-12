@@ -27,7 +27,10 @@ export class BaseService {
             return;
         }
 
-        return Observable.throw(err.json());
+        const errorObjectStr = err.json();
+        // errorModel = JSON.parse(errorObjectStr);
+
+        return Observable.throw(errorObjectStr);
     }
 
     protected createAuthRequestOptions(): RequestOptions {

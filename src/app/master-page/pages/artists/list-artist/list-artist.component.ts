@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 
 import {ArtistModel} from '../models/artist.model';
 import {ArtistsFacade} from '../services/artists.facade';
 import {AppSharedService} from '../../../../shared/services/app-shared.service';
 import {PageChangeEvent} from '../../../../shared/models/page-change-event.model';
+import {PaginationModel} from '../../../../shared/models/pagination.model';
+import {config} from '../../../../config/configs';
 
 @Component({
     selector: 'app-list-artist',
@@ -13,23 +15,42 @@ import {PageChangeEvent} from '../../../../shared/models/page-change-event.model
 })
 export class ListArtistComponent implements OnInit {
 
-    artists: ArtistModel[] = [];
+    pagination: PaginationModel<ArtistModel>;
 
     constructor(private sharedService: AppSharedService,
                 private artistsFacade: ArtistsFacade,
-                private route: ActivatedRoute) {
-        sharedService.emitPageChange(new PageChangeEvent('Artists', 'List'));
+                private router: Router) {
+        sharedService.emitPageChange(
+            new PageChangeEvent(config.breadcrumb.sections.artists, config.breadcrumb.subSections.list));
     }
 
     ngOnInit() {
-        this.route.params.subscribe(params => {
-            this.loadArtists(+params['id']);
-        });
+        this.loadArtists(1);
     }
 
-    loadArtists(pageNumber: number) {
-        this.artistsFacade.getArtists(1).subscribe(artists => {
-            this.artists = artists;
-        });
+    goToAddArtist() {
+        this.router.navigate(['artists/add']);
+    }
+
+    goToViewArtist(id: string) {
+        this.router.navigate([`artists/view/${id}`]);
+    }
+
+    goToEditArtist(id: string) {
+        this.router.navigate([`artists/edit/${id}`]);
+    }
+
+    onArtistPageClick(pageNumber: number): void {
+        if (pageNumber >= 1 && pageNumber <= this.pagination.totalPages) {
+            this.loadArtists(pageNumber);
+        }
+    }
+
+    private loadArtists(pageNumber: number): void {
+        this.artistsFacade.getArtists(pageNumber)
+            .map((pagination: PaginationModel<ArtistModel>) => {
+                this.pagination = pagination;
+            })
+            .subscribe();
     }
 }

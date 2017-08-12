@@ -3,14 +3,19 @@ import {Observable} from 'rxjs/Observable';
 
 import {ArtistModel} from '../models/artist.model';
 import {ArtistsService} from './artists.service';
+import {PaginationModel} from '../../../../shared/models/pagination.model';
 
 @Injectable()
 export class ArtistsFacade {
     constructor(private artistsService: ArtistsService) {
     }
 
-    getArtists(pageNumber: number): Observable<ArtistModel[]> {
+    getArtists(pageNumber: number): Observable<PaginationModel<ArtistModel>> {
         return this.artistsService.get(pageNumber);
+    }
+
+    getArtist(id: string): Observable<ArtistModel> {
+        return this.artistsService.getById(id);
     }
 
     add(artist: ArtistModel): Observable<Response> {

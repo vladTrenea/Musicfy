@@ -1,3 +1,6 @@
-<p>
-  view-artist works!
-</p>
+<div *ngIf="artist">
+    <p>{{artist.name}}</p>
+    <div>
+        {{artist.description}}
+    </div>
+</div>

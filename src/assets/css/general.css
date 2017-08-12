@@ -3,3 +3,23 @@
     padding-top: 5px;
     color: #ff5252;
 }
+
+.page-container {
+    margin-top: 40px;
+}
+
+.go-right {
+    float:right
+}
+
+.go-left {
+    float:left;
+}
+
+.page-link {
+    cursor:pointer !important;
+}
+
+.action-item {
+    cursor: pointer;
+}
