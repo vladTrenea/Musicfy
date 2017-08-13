@@ -1,4 +1,5 @@
-<form #editArtistForm="ngForm" novalidate>
+<app-progress-spinner *ngIf="!artist && isDataLoading"></app-progress-spinner>
+<form *ngIf="artist && !isDataLoading" #editArtistForm="ngForm" novalidate>
     <div class="row">
         <fieldset class="form-group col-lg-8">
             <label class="ng-tns-c24-2">Name</label>

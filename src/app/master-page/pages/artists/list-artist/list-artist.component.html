@@ -16,6 +16,9 @@
                 <span class="action-item">
                     <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditArtist(pagination.items[i].id)"></i>
                 </span>
+                <span class="action-item">
+                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteArtistClick(pagination.items[i].id)"></i>
+                </span>
             </article>
 
             <article class="col-lg-4 artist-list-item" *ngIf="i + 1 < pagination.items.length">
@@ -26,6 +29,9 @@
                 <span class="action-item">
                     <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditArtist(pagination.items[i+1].id)"></i>
                 </span>
+                <span class="action-item">
+                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteArtistClick(pagination.items[i+1].id)"></i>
+                </span>
             </article>
 
             <article class="col-lg-4 artist-list-item" *ngIf="i + 2 < pagination.items.length">
@@ -35,6 +41,9 @@
                 </span>
                 <span class="action-item">
                     <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditArtist(pagination.items[i+2].id)"></i>
+                </span>
+                <span class="action-item">
+                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteArtistClick(pagination.items[i+2].id)"></i>
                 </span>
             </article>
         </div>

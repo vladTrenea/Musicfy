@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {Http, RequestOptions, XHRBackend} from '@angular/http';
-import {MdProgressSpinnerModule} from '@angular/material';
+import {MaterialModule, MdCoreModule, MdProgressSpinnerModule} from '@angular/material';
 
 import {AuthGuard} from './guards/auth.guard';
 import {AuthFacade} from './services/auth.facade';
@@ -14,6 +14,7 @@ import {HttpInterceptor} from './interceptors/http.interceptor';
 import {AdminGuard} from './guards/admin.guard';
 import {EmptyValidator} from './validators/empty-validator.directive';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
+import { ModalComponent } from './modals/modal/modal.component';
 
 export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOptions, router: Router) {
     return new HttpInterceptor(backend, defaultOptions, router);
@@ -23,9 +24,10 @@ export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOpti
     imports: [
         CommonModule,
         FormsModule,
-        MdProgressSpinnerModule
+        MdProgressSpinnerModule,
+        MdCoreModule,
     ],
-    declarations: [EmptyValidator, ProgressSpinnerComponent],
+    declarations: [EmptyValidator, ProgressSpinnerComponent, ModalComponent],
     providers: [AuthGuard,
         AdminGuard,
         AuthFacade,
@@ -41,6 +43,7 @@ export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOpti
     exports: [
         FormsModule,
         EmptyValidator,
+        MaterialModule,
         ProgressSpinnerComponent
     ]
 })

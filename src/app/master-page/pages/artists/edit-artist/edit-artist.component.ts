@@ -17,6 +17,7 @@ export class EditArtistComponent implements OnInit {
     artist: ArtistModel;
     errorMessage: string;
     formSubmitted: boolean;
+    isDataLoading: boolean;
 
     constructor(private sharedService: AppSharedService,
                 private artistsFacade: ArtistsFacade,
@@ -27,12 +28,19 @@ export class EditArtistComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.route.params.map(params => {
-            this.artistsFacade.getArtist((+params['id']).toString())
+        this.route.params.subscribe(params => {
+            const id = params['id'];
+
+            this.isDataLoading = true;
+            this.artistsFacade.getArtist(id)
                 .map((artist: ArtistModel) => {
                     this.artist = artist;
-                });
-        }).subscribe();
+                })
+                .finally(() => {
+                    this.isDataLoading = false;
+                })
+                .subscribe();
+        });
     }
 
     editArtist(valid: boolean) {

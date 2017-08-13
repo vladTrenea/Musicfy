@@ -7,6 +7,9 @@ import {AppSharedService} from '../../../../shared/services/app-shared.service';
 import {PageChangeEvent} from '../../../../shared/models/page-change-event.model';
 import {PaginationModel} from '../../../../shared/models/pagination.model';
 import {config} from '../../../../config/configs';
+import {ModalResponse} from '../../../../shared/modals/modal-response.model';
+import {ModalComponent} from '../../../../shared/modals/modal/modal.component';
+import {MdDialog} from '@angular/material';
 
 @Component({
     selector: 'app-list-artist',
@@ -20,7 +23,8 @@ export class ListArtistComponent implements OnInit {
 
     constructor(private sharedService: AppSharedService,
                 private artistsFacade: ArtistsFacade,
-                private router: Router) {
+                private router: Router,
+                private dialog: MdDialog) {
         sharedService.emitPageChange(
             new PageChangeEvent(config.breadcrumb.sections.artists, config.breadcrumb.subSections.list));
     }
@@ -39,6 +43,19 @@ export class ListArtistComponent implements OnInit {
 
     goToEditArtist(id: string) {
         this.router.navigate([`artists/edit/${id}`]);
+    }
+
+    onDeleteArtistClick(id: string) {
+        const dialogRef = this.dialog.open(ModalComponent);
+        dialogRef.componentInstance.initDialog('Delete', 'Are you sure?', true);
+        dialogRef.afterClosed().subscribe((result: ModalResponse) => {
+            if (result && result.isCallback) {
+                this.artistsFacade.delete(id)
+                    .subscribe(() => {
+                        location.reload();
+                    });
+            }
+        });
     }
 
     onArtistPageClick(pageNumber: number): void {

@@ -26,7 +26,7 @@ export class ViewArtistComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
-            let id = params['id'];
+            const id = params['id'];
 
             this.artistsFacade.getArtist(id)
                 .map((artist: ArtistModel) => {
