@@ -59,7 +59,7 @@ export class ListArtistComponent implements OnInit {
     }
 
     onArtistPageClick(pageNumber: number): void {
-        if (pageNumber >= 1 && pageNumber <= this.pagination.totalPages) {
+        if (pageNumber !== this.pagination.page && pageNumber >= 1 && pageNumber <= this.pagination.totalPages) {
             this.loadArtists(pageNumber);
         }
     }
