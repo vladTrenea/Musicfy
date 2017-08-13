@@ -8,7 +8,8 @@ export const config = {
         logoutEndpoint: `${apiBaseUrl}/account/logout`,
         artistsEndpoint: `${apiBaseUrl}/artists`,
         songsEndpoint: `${apiBaseUrl}/songs`,
-        instrumentsEndpoint: `${apiBaseUrl}/instruments`
+        instrumentsEndpoint: `${apiBaseUrl}/instruments`,
+        songCategoriesEndpoint: `${apiBaseUrl}/songs/categories`
     },
     headers: {
         tokenHeaderName: 'X-Auth-Token',

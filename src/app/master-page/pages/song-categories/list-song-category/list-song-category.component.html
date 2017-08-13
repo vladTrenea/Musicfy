@@ -1,0 +1,31 @@
+<div class="go-right">
+    <button class="btn btn-sm btn-primary" (click)="goToAddSongCategory()">New song category</button>
+</div>
+
+<div *ngIf="!songCategories && isDataLoading">
+    <app-progress-spinner></app-progress-spinner>
+</div>
+
+<div *ngIf="songCategories && !isDataLoading" class="page-container">
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let songCategory of songCategories">
+            <td>{{songCategory.name}}</td>
+            <td>
+                <span class="action-item">
+                    <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditSongCategory(songCategory.id)"></i>
+                </span>
+                <span class="action-item">
+                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteSongCategoryClick(songCategory.id)"></i>
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

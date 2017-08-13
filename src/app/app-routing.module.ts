@@ -45,6 +45,10 @@ const routes: Routes = [
 
             },
             {
+                path: 'songCategories',
+                loadChildren: 'app/master-page/pages/song-categories/song-categories.module#SongCategoriesModule',
+            },
+            {
                 path: '',
                 redirectTo: '/login',
                 pathMatch: 'full'
