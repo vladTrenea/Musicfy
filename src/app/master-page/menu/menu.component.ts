@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
 import {AuthFacade} from '../../shared/services/auth.facade';
+import {AppSharedService} from '../../shared/services/app-shared.service';
+import {config} from '../../config/configs';
 
 @Component({
     selector: 'app-menu',
@@ -9,9 +11,18 @@ import {AuthFacade} from '../../shared/services/auth.facade';
 })
 export class MenuComponent implements OnInit {
 
-    userLoggedIn: string;
+    sections = config.breadcrumb.sections;
 
-    constructor(private authFacade: AuthFacade) {
+    userLoggedIn: string;
+    section: string;
+    subSection: string;
+
+    constructor(private authFacade: AuthFacade,
+                private sharedService: AppSharedService) {
+        sharedService.changeEmitted$.subscribe(page => {
+            this.section = page.section;
+            this.subSection = page.subsection;
+        });
     }
 
     ngOnInit() {

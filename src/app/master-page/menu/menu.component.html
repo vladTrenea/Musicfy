@@ -35,13 +35,13 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li>
+            <li [ngClass]="{'active': sections.dashboard === section}">
                 <a routerLink="/profile"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
-            <li class="active">
+            <li [ngClass]="{'active': sections.artists === section}">
                 <a routerLink="/artists"><i class="fa fa-fw fa-bar-chart-o"></i> Artists</a>
             </li>
-            <li>
+            <li [ngClass]="{'active': sections.songs === section}">
                 <a routerLink="/songs"><i class="fa fa-fw fa-table"></i> Songs</a>
             </li>
         </ul>

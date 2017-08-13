@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 import {AppSharedService} from '../shared/services/app-shared.service';
 
@@ -7,7 +7,7 @@ import {AppSharedService} from '../shared/services/app-shared.service';
     templateUrl: './master-page.component.html',
     styleUrls: ['./master-page.component.css']
 })
-export class MasterPageComponent implements OnInit {
+export class MasterPageComponent {
 
     section: string;
     subSection: string;
@@ -18,8 +18,4 @@ export class MasterPageComponent implements OnInit {
             this.subSection = page.subsection;
         });
     }
-
-    ngOnInit() {
-    }
-
 }

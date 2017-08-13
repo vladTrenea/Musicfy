@@ -31,6 +31,7 @@ export const config = {
             view: 'view'
         },
         sections: {
+            dashboard: 'Dashboard',
             artists: 'Artists',
             songs: 'Songs'
         }
