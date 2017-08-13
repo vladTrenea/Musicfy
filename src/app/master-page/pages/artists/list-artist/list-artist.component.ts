@@ -16,6 +16,7 @@ import {config} from '../../../../config/configs';
 export class ListArtistComponent implements OnInit {
 
     pagination: PaginationModel<ArtistModel>;
+    isDataLoading: boolean;
 
     constructor(private sharedService: AppSharedService,
                 private artistsFacade: ArtistsFacade,
@@ -47,10 +48,13 @@ export class ListArtistComponent implements OnInit {
     }
 
     private loadArtists(pageNumber: number): void {
+        this.isDataLoading = true;
         this.artistsFacade.getArtists(pageNumber)
             .map((pagination: PaginationModel<ArtistModel>) => {
                 this.pagination = pagination;
             })
-            .subscribe();
+            .subscribe(() => {
+                this.isDataLoading = false;
+            });
     }
 }

@@ -1,7 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {Http, HttpModule} from '@angular/http';
+import {HttpModule} from '@angular/http';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import 'hammerjs';
 
 import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
@@ -28,6 +30,8 @@ import {AppSharedService} from './shared/services/app-shared.service';
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
         FormsModule,
         HttpModule,
         AppRoutingModule,

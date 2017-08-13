@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {Http, RequestOptions, XHRBackend} from '@angular/http';
+import {MdProgressSpinnerModule} from '@angular/material';
 
 import {AuthGuard} from './guards/auth.guard';
 import {AuthFacade} from './services/auth.facade';
@@ -12,6 +13,7 @@ import {StorageService} from './services/storage.service';
 import {HttpInterceptor} from './interceptors/http.interceptor';
 import {AdminGuard} from './guards/admin.guard';
 import {EmptyValidator} from './validators/empty-validator.directive';
+import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 
 export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOptions, router: Router) {
     return new HttpInterceptor(backend, defaultOptions, router);
@@ -20,9 +22,10 @@ export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOpti
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        MdProgressSpinnerModule
     ],
-    declarations: [EmptyValidator],
+    declarations: [EmptyValidator, ProgressSpinnerComponent],
     providers: [AuthGuard,
         AdminGuard,
         AuthFacade,
@@ -37,7 +40,8 @@ export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOpti
     ],
     exports: [
         FormsModule,
-        EmptyValidator
+        EmptyValidator,
+        ProgressSpinnerComponent
     ]
 })
 export class SharedModule {

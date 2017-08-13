@@ -2,7 +2,10 @@
     <button class="btn btn-sm btn-primary" (click)="goToAddArtist()">New Artist</button>
 </div>
 
-<div *ngIf="pagination" class="page-container">
+<div *ngIf="!pagination && isDataLoading">
+    <app-progress-spinner></app-progress-spinner>
+</div>
+<div *ngIf="pagination && !isDataLoading" class="page-container">
     <div *ngFor="let item of pagination.items; let i = index">
         <div class="row" *ngIf="i % 3 === 0">
             <article class="col-lg-4 artist-list-item" *ngIf="i < pagination.items.length">

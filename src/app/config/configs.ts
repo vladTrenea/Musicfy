@@ -39,5 +39,9 @@ export const config = {
         403: 'Forbidden',
         404: 'Not Found',
         500: 'Internal Server Error'
+    },
+    progressSpinner: {
+        color: 'primary',
+        mode: 'indeterminate'
     }
 };
