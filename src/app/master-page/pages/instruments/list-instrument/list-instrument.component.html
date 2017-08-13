@@ -1,0 +1,31 @@
+<div class="go-right">
+    <button class="btn btn-sm btn-primary" (click)="goToAddInstrument()">New Instrument</button>
+</div>
+
+<div *ngIf="!instruments && isDataLoading">
+    <app-progress-spinner></app-progress-spinner>
+</div>
+
+<div *ngIf="instruments && !isDataLoading" class="page-container">
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let instrument of instruments">
+            <td>{{instrument.name}}</td>
+            <td>
+                <span class="action-item">
+                    <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditInstrument(instrument.id)"></i>
+                </span>
+                <span class="action-item">
+                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteInstrumentClick(instrument.id)"></i>
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

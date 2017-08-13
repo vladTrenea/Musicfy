@@ -7,7 +7,8 @@ export const config = {
         loginEndpoint: `${apiBaseUrl}/account/login`,
         logoutEndpoint: `${apiBaseUrl}/account/logout`,
         artistsEndpoint: `${apiBaseUrl}/artists`,
-        songsEndpoint: `${apiBaseUrl}/songs`
+        songsEndpoint: `${apiBaseUrl}/songs`,
+        instrumentsEndpoint: `${apiBaseUrl}/instruments`
     },
     headers: {
         tokenHeaderName: 'X-Auth-Token',
@@ -33,7 +34,9 @@ export const config = {
         sections: {
             dashboard: 'Dashboard',
             artists: 'Artists',
-            songs: 'Songs'
+            songs: 'Songs',
+            instruments: 'Instruments',
+            songCategories: 'Song Categories'
         }
     },
     errorMessages: {

@@ -40,6 +40,11 @@ const routes: Routes = [
                 component: FaqComponent
             },
             {
+                path: 'instruments',
+                loadChildren: 'app/master-page/pages/instruments/instruments.module#InstrumentsModule',
+
+            },
+            {
                 path: '',
                 redirectTo: '/login',
                 pathMatch: 'full'

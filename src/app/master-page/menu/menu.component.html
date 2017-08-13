@@ -39,10 +39,16 @@
                 <a routerLink="/profile"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             <li [ngClass]="{'active': sections.artists === section}">
-                <a routerLink="/artists"><i class="fa fa-fw fa-bar-chart-o"></i> Artists</a>
+                <a routerLink="/artists"><i class="fa fa-users" aria-hidden="true"></i> Artists</a>
             </li>
             <li [ngClass]="{'active': sections.songs === section}">
-                <a routerLink="/songs"><i class="fa fa-fw fa-table"></i> Songs</a>
+                <a routerLink="/songs"><i class="fa fa-headphones" aria-hidden="true"></i> Songs</a>
+            </li>
+            <li [ngClass]="{'active': sections.songCategories === section}">
+                <a routerLink="/songCategories"><i class="fa fa-object-group" aria-hidden="true"></i> Song Categories</a>
+            </li>
+            <li [ngClass]="{'active': sections.instruments === section}">
+                <a routerLink="/instruments"><i class="fa fa-music" aria-hidden="true"></i> Instruments</a>
             </li>
         </ul>
     </div>

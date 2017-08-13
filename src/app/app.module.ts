@@ -17,6 +17,7 @@ import {FaqComponent} from './master-page/pages/faq/faq.component';
 import {ArtistsModule} from './master-page/pages/artists/artists.module';
 import {SongsModule} from './master-page/pages/songs/songs.module';
 import {AppSharedService} from './shared/services/app-shared.service';
+import {InstrumentsModule} from './master-page/pages/instruments/instruments.module';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import {AppSharedService} from './shared/services/app-shared.service';
         AppRoutingModule,
         SharedModule,
         ArtistsModule,
-        SongsModule
+        SongsModule,
+        InstrumentsModule
     ],
     exports: [],
     providers: [AppSharedService],
