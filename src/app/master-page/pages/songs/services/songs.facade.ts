@@ -29,8 +29,16 @@ export class SongsFacade {
         return this.songsService.get(pageNumber);
     }
 
+    getSongById(id: string): Observable<SongModel> {
+        return this.songsService.getById(id);
+    }
+
     add(song: SongModel) {
         return this.songsService.add(song);
+    }
+
+    update(id: string, song: SongModel) {
+        return this.songsService.update(id, song);
     }
 
     delete(id: string) {

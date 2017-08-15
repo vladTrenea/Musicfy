@@ -1,3 +1,76 @@
-<p>
-  edit-song works!
-</p>
+<form #editSongForm="ngForm" novalidate>
+    <div class="row">
+        <fieldset class="form-group col-lg-8">
+            <label>Name</label>
+            <input #name="ngModel" class="form-control" type="text" id="name" name="name"
+                   [(ngModel)]="song.name" notEmpty>
+            <div class="input-error" *ngIf="formSubmitted && name.errors">
+                Name is required
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="row">
+        <fieldset class="form-group col-lg-8">
+            <label>Url</label>
+            <input #url="ngModel" class="form-control" type="text" id="url" name="url"
+                   [(ngModel)]="song.url" notEmpty>
+            <div class="input-error" *ngIf="formSubmitted && url.errors">
+                Url is required
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="row">
+        <fieldset class="form-group col-lg-8">
+            <label>Artist</label>
+            <br/>
+            <select2 [data]="artists" (valueChanged)="changeArtist($event)"></select2>
+        </fieldset>
+        <div class="input-error" *ngIf="formSubmitted && !song.artistId">
+            Artist is required
+        </div>
+    </div>
+
+    <div class="row">
+        <fieldset class="form-group col-lg-8">
+            <label>Category</label>
+            <br/>
+            <select2 [data]="songCategories" (valueChanged)="changeSongCategory($event)"></select2>
+        </fieldset>
+        <div class="input-error" *ngIf="formSubmitted && !song.songCategoryId">
+            Category is required
+        </div>
+    </div>
+
+    <div class="row">
+        <fieldset class="form-group col-lg-8">
+            <label>Instruments</label>
+            <br/>
+            <select2 [data]="instruments" [options]="instrumentsOptions" (valueChanged)="changeInstrument($event)"></select2>
+            <div class="input-error" *ngIf="formSubmitted && song.instrumentIds.length === 0">
+                Instruments are required
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="row">
+        <fieldset class="form-group col-lg-8">
+            <label>Tags</label>
+            <br/>
+            <select2 [data]="tags" [options]="tagsOptions" (valueChanged)="changeTag($event)"></select2>
+            <div class="input-error" *ngIf="formSubmitted && song.tagIds.length === 0">
+                Instruments are required
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="input-error" *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+
+    <div clas="row">
+        <button class="btn btn-primary" type="button" (click)="editSong(editSongForm.form.valid)">Save</button>
+        <button class="btn btn-danger" type="button" (click)="goToList()">Cancel</button>
+    </div>
+</form>

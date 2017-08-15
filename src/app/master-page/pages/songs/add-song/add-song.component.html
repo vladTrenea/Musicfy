@@ -60,9 +60,13 @@
             <br/>
             <select2 [data]="tags" [options]="tagsOptions" (valueChanged)="changeTag($event)"></select2>
             <div class="input-error" *ngIf="formSubmitted && song.tagIds.length === 0">
-                Instruments are required
+                Tags are required
             </div>
         </fieldset>
+    </div>
+
+    <div class="input-error" *ngIf="errorMessage">
+        {{errorMessage}}
     </div>
 
     <div clas="row">

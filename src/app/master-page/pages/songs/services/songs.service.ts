@@ -28,10 +28,27 @@ export class SongsService extends BaseService {
             .catch(error => this.handleError(error));
     }
 
+    getById(id: string): Observable<SongModel> {
+        const requestOpt = this.createAuthRequestOptions();
+        const url = `${config.apiEndpoints.songsEndpoint}/${id}`;
+
+        return this.http.get(url, requestOpt)
+            .map(response => response.json() as SongModel[])
+            .catch(error => this.handleError(error));
+    }
+
     add(song: SongModel): Observable<Response> {
         const requestOpt = this.createAuthRequestOptions();
 
         return this.http.post(config.apiEndpoints.songsEndpoint, JSON.stringify(song), requestOpt)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
+    }
+
+    update(id: string, song: SongModel): Observable<Response> {
+        const requestOpt = this.createAuthRequestOptions();
+
+        return this.http.put(`${config.apiEndpoints.songsEndpoint}/${id}`, JSON.stringify(song), requestOpt)
             .map(response => response.json())
             .catch(error => this.handleError(error));
     }

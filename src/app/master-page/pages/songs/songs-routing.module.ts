@@ -14,12 +14,12 @@ const routes: Routes = [
         // canActivate: [AdminGuard]
     },
     {
-        path: 'edit',
+        path: 'edit/:id',
         component: EditSongComponent,
         // canActivate: [AdminGuard]
     },
     {
-        path: 'view',
+        path: 'view/:id',
         component: ViewSongComponent
     },
     {
