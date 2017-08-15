@@ -1,0 +1,31 @@
+<div class="go-right">
+    <button class="btn btn-sm btn-primary" (click)="goToAddTag()">New Tag</button>
+</div>
+
+<div *ngIf="!tags && isDataLoading">
+    <app-progress-spinner></app-progress-spinner>
+</div>
+
+<div *ngIf="tags && tags.length > 0 && !isDataLoading" class="page-container">
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let tag of tags">
+            <td>{{tag.name}}</td>
+            <td>
+                <span class="action-item">
+                    <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditTag(tag.id)"></i>
+                </span>
+                <span class="action-item">
+                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteTagClick(tag.id)"></i>
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

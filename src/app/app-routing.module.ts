@@ -49,6 +49,11 @@ const routes: Routes = [
                 loadChildren: 'app/master-page/pages/song-categories/song-categories.module#SongCategoriesModule',
             },
             {
+                path: 'tags',
+                loadChildren: 'app/master-page/pages/tags/tags.module#TagsModule',
+                canActivate: [AuthGuard]
+            },
+            {
                 path: '',
                 redirectTo: '/login',
                 pathMatch: 'full'

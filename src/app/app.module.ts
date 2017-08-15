@@ -19,6 +19,7 @@ import {SongsModule} from './master-page/pages/songs/songs.module';
 import {AppSharedService} from './shared/services/app-shared.service';
 import {InstrumentsModule} from './master-page/pages/instruments/instruments.module';
 import {SongCategoriesModule} from './master-page/pages/song-categories/song-categories.module';
+import {TagsModule} from './master-page/pages/tags/tags.module';
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import {SongCategoriesModule} from './master-page/pages/song-categories/song-cat
         ArtistsModule,
         SongsModule,
         InstrumentsModule,
-        SongCategoriesModule
+        SongCategoriesModule,
+        TagsModule
     ],
     exports: [],
     providers: [AppSharedService],

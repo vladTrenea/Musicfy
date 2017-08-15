@@ -50,6 +50,9 @@
             <li [ngClass]="{'active': sections.instruments === section}">
                 <a routerLink="/instruments"><i class="fa fa-music" aria-hidden="true"></i> Instruments</a>
             </li>
+            <li [ngClass]="{'active': sections.tags === section}">
+                <a routerLink="/tags"><i class="fa fa-tags" aria-hidden="true"></i> Tags</a>
+            </li>
         </ul>
     </div>
     <!-- /.navbar-collapse -->

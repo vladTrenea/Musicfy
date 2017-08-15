@@ -5,4 +5,5 @@ export class SongModel {
     artistId: string;
     songCategoryId: string;
     instrumentIds: string[] = [];
+    tagIds: string[] = [];
 }

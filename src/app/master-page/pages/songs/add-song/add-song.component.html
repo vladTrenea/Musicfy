@@ -21,20 +21,6 @@
         </fieldset>
     </div>
 
-    <!--<div class="row">-->
-        <!--<fieldset class="form-group col-lg-8">-->
-            <!--<label>Artist</label>-->
-            <!--<select #artist="ngModel" class="form-control" id="artist" name="artist" [(ngModel)]="song.artist.id">-->
-                <!--<option *ngFor="let artist of artists" [value]="artist.id">-->
-                    <!--{{artist.name}}-->
-                <!--</option>-->
-            <!--</select>-->
-            <!--<div class="input-error" *ngIf="formSubmitted && !song.artist?.id">-->
-                <!--Artist is required-->
-            <!--</div>-->
-        <!--</fieldset>-->
-    <!--</div>-->
-
     <div class="row">
         <fieldset class="form-group col-lg-8">
             <label>Artist</label>
@@ -63,6 +49,17 @@
             <br/>
             <select2 [data]="instruments" [options]="instrumentsOptions" (valueChanged)="changeInstrument($event)"></select2>
             <div class="input-error" *ngIf="formSubmitted && song.instrumentIds.length === 0">
+                Instruments are required
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="row">
+        <fieldset class="form-group col-lg-8">
+            <label>Tags</label>
+            <br/>
+            <select2 [data]="tags" [options]="tagsOptions" (valueChanged)="changeTag($event)"></select2>
+            <div class="input-error" *ngIf="formSubmitted && song.tagIds.length === 0">
                 Instruments are required
             </div>
         </fieldset>

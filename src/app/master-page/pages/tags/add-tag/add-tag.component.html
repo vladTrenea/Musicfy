@@ -1,0 +1,17 @@
+<form #addTagForm="ngForm" novalidate>
+    <div class="row">
+        <fieldset class="form-group col-lg-8">
+            <label class="ng-tns-c24-2">Name</label>
+            <input #name="ngModel" class="form-control" type="text" id="name" name="name"
+                   [(ngModel)]="tag.name" notEmpty>
+            <div class="input-error" *ngIf="formSubmitted && name.errors">
+                Name is required
+            </div>
+        </fieldset>
+    </div>
+
+    <div clas="row">
+        <button class="btn btn-primary" type="button" (click)="addTag(addTagForm.form.valid)">Save</button>
+        <button class="btn btn-danger" type="button" (click)="goToList()">Cancel</button>
+    </div>
+</form>

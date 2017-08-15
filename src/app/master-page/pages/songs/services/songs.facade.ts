@@ -11,6 +11,8 @@ import {InstrumentsService} from '../../instruments/services/instruments.service
 import {SongCategoriesService} from '../../song-categories/services/song-categories.service';
 import {ArtistsService} from '../../artists/services/artists.service';
 import {SongModel} from '../models/song.model';
+import {TagModel} from '../../tags/models/tag.model';
+import {TagsService} from '../../tags/services/tags.service';
 
 @Injectable()
 export class SongsFacade {
@@ -18,7 +20,8 @@ export class SongsFacade {
     constructor(private songsService: SongsService,
                 private instrumentsService: InstrumentsService,
                 private songCategoriesService: SongCategoriesService,
-                private artistsService: ArtistsService) {
+                private artistsService: ArtistsService,
+                private tagsService: TagsService) {
 
     }
 
@@ -44,5 +47,9 @@ export class SongsFacade {
 
     getAllSongCategories(): Observable<SongCategoryModel[]> {
         return this.songCategoriesService.getAll();
+    }
+
+    getAllTags(): Observable<TagModel[]> {
+        return this.tagsService.getAll();
     }
 }

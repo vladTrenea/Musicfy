@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Select2OptionData} from 'ng2-select2';
 
@@ -10,6 +10,7 @@ import {ArtistModel} from '../../artists/models/artist.model';
 import {config} from '../../../../config/configs';
 import {PageChangeEvent} from '../../../../shared/models/page-change-event.model';
 import {AppSharedService} from '../../../../shared/services/app-shared.service';
+import {TagModel} from '../../tags/models/tag.model';
 
 @Component({
     selector: 'app-add-song',
@@ -22,11 +23,16 @@ export class AddSongComponent implements OnInit {
     artists: Select2OptionData[] = [];
     songCategories: Select2OptionData[] = [];
     instruments: Select2OptionData[] = [];
+    tags: Select2OptionData[] = [];
 
     errorMessage: string;
     formSubmitted: boolean;
 
     instrumentsOptions: Select2Options = {
+        multiple: true
+    };
+
+    tagsOptions: Select2Options = {
         multiple: true
     };
 
@@ -64,6 +70,15 @@ export class AddSongComponent implements OnInit {
                 this.instruments = instruments;
             })
             .subscribe();
+
+        this.songsFacade.getAllTags()
+            .map((tags: TagModel[]) => {
+                for (const tag of tags) {
+                    tag.text = tag.name;
+                }
+                this.tags = tags;
+            })
+            .subscribe();
     }
 
     changeInstrument($event) {
@@ -78,12 +93,15 @@ export class AddSongComponent implements OnInit {
         this.song.songCategoryId = $event.value;
     }
 
+    changeTag($event) {
+        this.song.tagIds = $event.value;
+    }
+
     addSong(valid: boolean) {
         this.formSubmitted = true;
         this.errorMessage = '';
 
         if (valid) {
-            console.log('Valid', this.song);
             this.songsFacade
                 .add(this.song)
                 .subscribe(() => {

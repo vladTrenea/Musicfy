@@ -9,7 +9,8 @@ export const config = {
         artistsEndpoint: `${apiBaseUrl}/artists`,
         songsEndpoint: `${apiBaseUrl}/songs`,
         instrumentsEndpoint: `${apiBaseUrl}/instruments`,
-        songCategoriesEndpoint: `${apiBaseUrl}/songs/categories`
+        songCategoriesEndpoint: `${apiBaseUrl}/songs/categories`,
+        tagsEndpoint: `${apiBaseUrl}/tags`
     },
     headers: {
         tokenHeaderName: 'X-Auth-Token',
@@ -37,7 +38,8 @@ export const config = {
             artists: 'Artists',
             songs: 'Songs',
             instruments: 'Instruments',
-            songCategories: 'Song Categories'
+            songCategories: 'Song Categories',
+            tags: 'Tags'
         }
     },
     errorMessages: {
