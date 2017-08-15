@@ -5,7 +5,7 @@
 <div *ngIf="!pagination && isDataLoading">
     <app-progress-spinner></app-progress-spinner>
 </div>
-<div *ngIf="pagination && !isDataLoading" class="page-container">
+<div *ngIf="pagination && pagination.items.length > 0 && !isDataLoading" class="page-container">
     <div *ngFor="let item of pagination.items; let i = index">
         <div class="row" *ngIf="i % 3 === 0">
             <article class="col-lg-4 artist-list-item" *ngIf="i < pagination.items.length">

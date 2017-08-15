@@ -6,7 +6,7 @@
     <app-progress-spinner></app-progress-spinner>
 </div>
 
-<div *ngIf="songCategories && !isDataLoading" class="page-container">
+<div *ngIf="songCategories && songCategories.length > 0 && !isDataLoading" class="page-container">
     <table class="table table-bordered table-hover">
         <thead>
         <tr>

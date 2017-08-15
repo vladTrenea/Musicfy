@@ -1,7 +1,7 @@
 <form #addArtistForm="ngForm" novalidate>
     <div class="row">
         <fieldset class="form-group col-lg-8">
-            <label class="ng-tns-c24-2">Name</label>
+            <label>Name</label>
             <input #name="ngModel" class="form-control" type="text" id="name" name="name"
                    [(ngModel)]="artist.name" notEmpty>
             <div class="input-error" *ngIf="formSubmitted && name.errors">

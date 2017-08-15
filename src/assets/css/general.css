@@ -23,3 +23,7 @@
 .action-item {
     cursor: pointer;
 }
+
+.select2-container {
+    width: 100% !important;
+}

@@ -1,9 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Http, RequestOptions, XHRBackend} from '@angular/http';
-import {MaterialModule, MdCoreModule, MdProgressSpinnerModule} from '@angular/material';
+import {
+    MaterialModule, MdAutocompleteModule, MdCoreModule, MdInputModule,
+    MdProgressSpinnerModule
+} from '@angular/material';
 
 import {AuthGuard} from './guards/auth.guard';
 import {AuthFacade} from './services/auth.facade';
@@ -13,8 +16,9 @@ import {StorageService} from './services/storage.service';
 import {HttpInterceptor} from './interceptors/http.interceptor';
 import {AdminGuard} from './guards/admin.guard';
 import {EmptyValidator} from './validators/empty-validator.directive';
-import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
-import { ModalComponent } from './modals/modal/modal.component';
+import {ProgressSpinnerComponent} from './components/progress-spinner/progress-spinner.component';
+import {ModalComponent} from './modals/modal/modal.component';
+import {Select2Module} from 'ng2-select2';
 
 export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOptions, router: Router) {
     return new HttpInterceptor(backend, defaultOptions, router);
@@ -24,8 +28,12 @@ export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOpti
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         MdProgressSpinnerModule,
+        MdAutocompleteModule,
         MdCoreModule,
+        MdInputModule,
+        Select2Module
     ],
     declarations: [EmptyValidator, ProgressSpinnerComponent, ModalComponent],
     providers: [AuthGuard,
@@ -42,8 +50,10 @@ export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOpti
     ],
     exports: [
         FormsModule,
+        ReactiveFormsModule,
         EmptyValidator,
         MaterialModule,
+        Select2Module,
         ProgressSpinnerComponent
     ]
 })

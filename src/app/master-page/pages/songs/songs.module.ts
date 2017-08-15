@@ -8,6 +8,8 @@ import {ListSongComponent} from './list-song/list-song.component';
 import {SharedModule} from '../../../shared/shared.module';
 import {SongsRoutingModule} from './songs-routing.module';
 import {SongsFacade} from './services/songs.facade';
+import {SongsService} from './services/songs.service';
+import {ModalComponent} from '../../../shared/modals/modal/modal.component';
 
 @NgModule({
     imports: [
@@ -16,7 +18,8 @@ import {SongsFacade} from './services/songs.facade';
         SongsRoutingModule
     ],
     declarations: [AddSongComponent, EditSongComponent, ViewSongComponent, ListSongComponent],
-    providers: [SongsFacade]
+    providers: [SongsFacade, SongsService],
+    entryComponents: [ModalComponent]
 })
 export class SongsModule {
 }

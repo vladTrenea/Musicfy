@@ -16,6 +16,15 @@ export class ArtistsService extends BaseService {
         super(http, router, storageService);
     }
 
+    getAll(): Observable<ArtistModel[]> {
+        const requestOpt = this.createAuthRequestOptions();
+        const url = `${config.apiEndpoints.artistsEndpoint}`;
+
+        return this.http.get(url, requestOpt)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
+    }
+
     get(pageNumber: number): Observable<PaginationModel<ArtistModel>> {
         const requestOpt = this.createAuthRequestOptions();
         const params: URLSearchParams = new URLSearchParams();
