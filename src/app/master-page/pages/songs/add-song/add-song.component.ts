@@ -5,7 +5,7 @@ import {Select2OptionData} from 'ng2-select2';
 import {SongsFacade} from '../services/songs.facade';
 import {InstrumentModel} from '../../instruments/models/instrument.model';
 import {SongCategoryModel} from '../../song-categories/models/song-category.model';
-import {SongModel} from '../models/song.model';
+import {AddEditSongModel} from '../models/add-edit-song.model';
 import {ArtistModel} from '../../artists/models/artist.model';
 import {config} from '../../../../config/configs';
 import {PageChangeEvent} from '../../../../shared/models/page-change-event.model';
@@ -19,7 +19,7 @@ import {TagModel} from '../../tags/models/tag.model';
 })
 export class AddSongComponent implements OnInit {
 
-    song: SongModel = new SongModel();
+    song: AddEditSongModel = new AddEditSongModel();
     artists: Select2OptionData[] = [];
     songCategories: Select2OptionData[] = [];
     instruments: Select2OptionData[] = [];

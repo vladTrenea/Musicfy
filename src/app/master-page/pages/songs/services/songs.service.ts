@@ -8,6 +8,7 @@ import {StorageService} from '../../../../shared/services/storage.service';
 import {PaginationModel} from '../../../../shared/models/pagination.model';
 import {config} from '../../../../config/configs';
 import {SongItemModel} from '../models/song-item.model';
+import {AddEditSongModel} from '../models/add-edit-song.model';
 import {SongModel} from '../models/song.model';
 
 @Injectable()
@@ -37,7 +38,7 @@ export class SongsService extends BaseService {
             .catch(error => this.handleError(error));
     }
 
-    add(song: SongModel): Observable<Response> {
+    add(song: AddEditSongModel): Observable<Response> {
         const requestOpt = this.createAuthRequestOptions();
 
         return this.http.post(config.apiEndpoints.songsEndpoint, JSON.stringify(song), requestOpt)
@@ -45,7 +46,7 @@ export class SongsService extends BaseService {
             .catch(error => this.handleError(error));
     }
 
-    update(id: string, song: SongModel): Observable<Response> {
+    update(id: string, song: AddEditSongModel): Observable<Response> {
         const requestOpt = this.createAuthRequestOptions();
 
         return this.http.put(`${config.apiEndpoints.songsEndpoint}/${id}`, JSON.stringify(song), requestOpt)

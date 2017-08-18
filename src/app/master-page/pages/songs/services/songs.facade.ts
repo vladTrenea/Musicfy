@@ -10,9 +10,10 @@ import {SongCategoryModel} from '../../song-categories/models/song-category.mode
 import {InstrumentsService} from '../../instruments/services/instruments.service';
 import {SongCategoriesService} from '../../song-categories/services/song-categories.service';
 import {ArtistsService} from '../../artists/services/artists.service';
-import {SongModel} from '../models/song.model';
+import {AddEditSongModel} from '../models/add-edit-song.model';
 import {TagModel} from '../../tags/models/tag.model';
 import {TagsService} from '../../tags/services/tags.service';
+import {SongModel} from '../models/song.model';
 
 @Injectable()
 export class SongsFacade {
@@ -33,11 +34,11 @@ export class SongsFacade {
         return this.songsService.getById(id);
     }
 
-    add(song: SongModel) {
+    add(song: AddEditSongModel) {
         return this.songsService.add(song);
     }
 
-    update(id: string, song: SongModel) {
+    update(id: string, song: AddEditSongModel) {
         return this.songsService.update(id, song);
     }
 
