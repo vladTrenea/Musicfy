@@ -11,12 +11,12 @@ const routes: Routes = [
     {
         path: 'add',
         component: AddSongComponent,
-        // canActivate: [AdminGuard]
+        canActivate: [AdminGuard]
     },
     {
         path: 'edit/:id',
         component: EditSongComponent,
-        // canActivate: [AdminGuard]
+        canActivate: [AdminGuard]
     },
     {
         path: 'view/:id',

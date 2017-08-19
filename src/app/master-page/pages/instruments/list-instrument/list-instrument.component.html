@@ -19,10 +19,10 @@
             <td>{{instrument.name}}</td>
             <td>
                 <span class="action-item">
-                    <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditInstrument(instrument.id)"></i>
+                    <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true" (click)="goToEditInstrument(instrument.id)"></i>
                 </span>
                 <span class="action-item">
-                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteInstrumentClick(instrument.id)"></i>
+                    <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true" (click)="onDeleteInstrumentClick(instrument.id)"></i>
                 </span>
             </td>
         </tr>

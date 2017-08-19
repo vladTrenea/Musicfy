@@ -7,6 +7,7 @@ import {MasterPageComponent} from './master-page/master-page.component';
 import {FaqComponent} from './master-page/pages/faq/faq.component';
 import {AuthGuard} from './shared/guards/auth.guard';
 import {ErrorComponent} from './error/error.component';
+import {AdminGuard} from './shared/guards/admin.guard';
 
 const routes: Routes = [
     {
@@ -37,21 +38,24 @@ const routes: Routes = [
             },
             {
                 path: 'faq',
-                component: FaqComponent
+                component: FaqComponent,
+                canActivate: [AuthGuard]
             },
             {
                 path: 'instruments',
                 loadChildren: 'app/master-page/pages/instruments/instruments.module#InstrumentsModule',
+                canActivate: [AdminGuard]
 
             },
             {
                 path: 'songCategories',
                 loadChildren: 'app/master-page/pages/song-categories/song-categories.module#SongCategoriesModule',
+                canActivate: [AdminGuard]
             },
             {
                 path: 'tags',
                 loadChildren: 'app/master-page/pages/tags/tags.module#TagsModule',
-                canActivate: [AuthGuard]
+                canActivate: [AdminGuard]
             },
             {
                 path: '',

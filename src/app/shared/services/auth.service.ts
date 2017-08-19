@@ -21,10 +21,10 @@ export class AuthService extends BaseService {
             .catch(err => this.handleError(err));
     }
 
-    logout(): Observable<any> {
+    logout(token: string): Observable<any> {
         const requestOpt = this.createAuthRequestOptions();
 
-        return this.http.post(config.apiEndpoints.logoutEndpoint, requestOpt)
+        return this.http.post(config.apiEndpoints.logoutEndpoint, null, requestOpt)
             .catch(err => this.handleError(err));
     }
 }

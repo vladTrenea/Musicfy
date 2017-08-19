@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {MdDialog} from '@angular/material';
 
 import {ArtistModel} from '../models/artist.model';
 import {ArtistsFacade} from '../services/artists.facade';
@@ -9,7 +10,8 @@ import {PaginationModel} from '../../../../shared/models/pagination.model';
 import {config} from '../../../../config/configs';
 import {ModalResponse} from '../../../../shared/modals/modal-response.model';
 import {ModalComponent} from '../../../../shared/modals/modal/modal.component';
-import {MdDialog} from '@angular/material';
+import {UserAuthorization} from '../../../../shared/models/user-authorization.model';
+import {AuthFacade} from '../../../../shared/services/auth.facade';
 
 @Component({
     selector: 'app-list-artist',
@@ -18,11 +20,14 @@ import {MdDialog} from '@angular/material';
 })
 export class ListArtistComponent implements OnInit {
 
+    userAuthorization: UserAuthorization;
+
     pagination: PaginationModel<ArtistModel>;
     isDataLoading: boolean;
 
     constructor(private sharedService: AppSharedService,
                 private artistsFacade: ArtistsFacade,
+                private authFacade: AuthFacade,
                 private router: Router,
                 private dialog: MdDialog) {
         sharedService.emitPageChange(
@@ -31,6 +36,8 @@ export class ListArtistComponent implements OnInit {
 
     ngOnInit() {
         this.loadArtists(1);
+
+        this.userAuthorization = this.authFacade.getCurrentUserAuthorization();
     }
 
     goToAddArtist() {

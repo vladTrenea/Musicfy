@@ -10,6 +10,8 @@ import {PaginationModel} from '../../../../shared/models/pagination.model';
 import {SongItemModel} from '../models/song-item.model';
 import {ModalComponent} from '../../../../shared/modals/modal/modal.component';
 import {ModalResponse} from '../../../../shared/modals/modal-response.model';
+import {UserAuthorization} from '../../../../shared/models/user-authorization.model';
+import {AuthFacade} from '../../../../shared/services/auth.facade';
 
 @Component({
     selector: 'app-list-song',
@@ -18,11 +20,14 @@ import {ModalResponse} from '../../../../shared/modals/modal-response.model';
 })
 export class ListSongComponent implements OnInit {
 
+    userAuthorization: UserAuthorization;
+
     pagination: PaginationModel<SongItemModel>;
     isDataLoading: boolean;
 
     constructor(private sharedService: AppSharedService,
                 private songsFacade: SongsFacade,
+                private authFacade: AuthFacade,
                 private router: Router,
                 private dialog: MdDialog) {
         sharedService.emitPageChange(
@@ -31,6 +36,8 @@ export class ListSongComponent implements OnInit {
 
     ngOnInit() {
         this.loadSongs(1);
+
+        this.authFacade.getCurrentUserAuthorization();
     }
 
     goToAddSong() {

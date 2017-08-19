@@ -19,10 +19,10 @@
             <td>{{songCategory.name}}</td>
             <td>
                 <span class="action-item">
-                    <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditSongCategory(songCategory.id)"></i>
+                    <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true" (click)="goToEditSongCategory(songCategory.id)"></i>
                 </span>
                 <span class="action-item">
-                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteSongCategoryClick(songCategory.id)"></i>
+                    <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true" (click)="onDeleteSongCategoryClick(songCategory.id)"></i>
                 </span>
             </td>
         </tr>

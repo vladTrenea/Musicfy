@@ -31,7 +31,6 @@ export class AddSongComponent implements OnInit {
     instrumentsOptions: Select2Options = {
         multiple: true
     };
-
     tagsOptions: Select2Options = {
         multiple: true
     };

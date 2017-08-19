@@ -19,10 +19,10 @@
             <td>{{tag.name}}</td>
             <td>
                 <span class="action-item">
-                    <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditTag(tag.id)"></i>
+                    <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true" (click)="goToEditTag(tag.id)"></i>
                 </span>
                 <span class="action-item">
-                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteTagClick(tag.id)"></i>
+                    <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true" (click)="onDeleteTagClick(tag.id)"></i>
                 </span>
             </td>
         </tr>

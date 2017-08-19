@@ -20,7 +20,8 @@ export class AuthFacade {
     }
 
     logout(): Observable<any> {
-        return this.authService.logout().map(response => {
+        const authorization = this.getCurrentUserAuthorization();
+        return this.authService.logout(authorization.token).map(response => {
             this.storageService.removeUserAuthorization();
 
             return null;

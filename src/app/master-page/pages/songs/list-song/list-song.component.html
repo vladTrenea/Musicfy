@@ -1,4 +1,4 @@
-<div class="go-right">
+<div class="go-right" *ngIf="userAuthorization?.isAdmin">
     <button class="btn btn-sm btn-primary" (click)="goToAddSong()">New Song</button>
 </div>
 
@@ -11,39 +11,39 @@
             <article class="col-lg-4" *ngIf="i < pagination.items.length">
                 {{pagination.items[i].name}}
                 <span class="action-item">
-                    <i class="fa fa-eye" aria-hidden="true" (click)="goToViewSong(pagination.items[i].id)"></i>
+                    <i class="fa fa-eye" mdTooltip="View" aria-hidden="true" (click)="goToViewSong(pagination.items[i].id)"></i>
                 </span>
                 <span class="action-item">
-                    <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditSong(pagination.items[i].id)"></i>
+                    <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true" (click)="goToEditSong(pagination.items[i].id)"></i>
                 </span>
                 <span class="action-item">
-                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteSongClick(pagination.items[i].id)"></i>
+                    <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true" (click)="onDeleteSongClick(pagination.items[i].id)"></i>
                 </span>
             </article>
 
             <article class="col-lg-4 artist-list-item" *ngIf="i + 1 < pagination.items.length">
                 {{pagination.items[i+1].name}}
                 <span class="action-item">
-                    <i class="fa fa-eye" aria-hidden="true" (click)="goToViewSong(pagination.items[i+1].id)"></i>
+                    <i class="fa fa-eye" mdTooltip="View" aria-hidden="true" (click)="goToViewSong(pagination.items[i+1].id)"></i>
                 </span>
                 <span class="action-item">
-                    <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditSong(pagination.items[i+1].id)"></i>
+                    <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true" (click)="goToEditSong(pagination.items[i+1].id)"></i>
                 </span>
                 <span class="action-item">
-                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteSongClick(pagination.items[i+1].id)"></i>
+                    <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true" (click)="onDeleteSongClick(pagination.items[i+1].id)"></i>
                 </span>
             </article>
 
             <article class="col-lg-4 artist-list-item" *ngIf="i + 2 < pagination.items.length">
                 {{pagination.items[i+2].name}}
                 <span class="action-item">
-                    <i class="fa fa-eye" aria-hidden="true" (click)="goToViewSong(pagination.items[i+2].id)"></i>
+                    <i class="fa fa-eye" mdTooltip="View" aria-hidden="true" (click)="goToViewSong(pagination.items[i+2].id)"></i>
                 </span>
                 <span class="action-item">
-                    <i class="fa fa-pencil" aria-hidden="true" (click)="goToEditSong(pagination.items[i+2].id)"></i>
+                    <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true" (click)="goToEditSong(pagination.items[i+2].id)"></i>
                 </span>
                 <span class="action-item">
-                    <i class="fa fa-trash-o" aria-hidden="true" (click)="onDeleteSongClick(pagination.items[i+2].id)"></i>
+                    <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true" (click)="onDeleteSongClick(pagination.items[i+2].id)"></i>
                 </span>
             </article>
         </div>

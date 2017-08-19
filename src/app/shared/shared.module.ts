@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Http, RequestOptions, XHRBackend} from '@angular/http';
 import {
     MaterialModule, MdAutocompleteModule, MdCoreModule, MdInputModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule, MdTooltipModule
 } from '@angular/material';
 import {Select2Module} from 'ng2-select2';
 
@@ -33,6 +33,7 @@ export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOpti
         MdAutocompleteModule,
         MdCoreModule,
         MdInputModule,
+        MdTooltipModule,
         Select2Module
     ],
     declarations: [EmptyValidator, ProgressSpinnerComponent, ModalComponent],

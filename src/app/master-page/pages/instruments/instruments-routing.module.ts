@@ -4,17 +4,18 @@ import {RouterModule, Routes} from '@angular/router';
 import {EditInstrumentComponent} from './edit-instrument/edit-instrument.component';
 import {ListInstrumentComponent} from './list-instrument/list-instrument.component';
 import {AddInstrumentComponent} from './add-instrument/add-instrument.component';
+import {AdminGuard} from '../../../shared/guards/admin.guard';
 
 const routes: Routes = [
     {
         path: 'add',
         component: AddInstrumentComponent,
-        // canActivate: [AdminGuard],
+        canActivate: [AdminGuard]
     },
     {
         path: 'edit/:id',
         component: EditInstrumentComponent,
-        // canActivate: [AdminGuard],
+        canActivate: [AdminGuard]
     },
     {
         path: 'list',
