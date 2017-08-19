@@ -1,3 +1,40 @@
-<p>
-  view-song works!
-</p>
+<app-progress-spinner *ngIf="isDataLoading"></app-progress-spinner>
+<div *ngIf="song && !isDataLoading">
+    <div class="row">
+        <h3>{{song.name}}</h3>
+    </div>
+    <div class="row">
+        <iframe title="YouTube video player"
+                class="youtube-player"
+                type="text/html"
+                [src]="videoUrl" height="100%" width="100%" frameborder="0"></iframe>
+    </div>
+
+    <div class="row">
+        <label>Artist</label>
+        <span>{{song.artist.name}}</span>
+    </div>
+
+    <div class="row">
+        <label>Category:</label>
+        <span>{{song.songCategory.name}}</span>
+    </div>
+
+    <div class="row">
+        <label>Instruments:</label>
+        <span *ngFor="let instrument of song.instruments">
+            {{instrument.name}},
+        </span>
+    </div>
+
+    <div class="row">
+        <label>Tags:</label>
+        <span *ngFor="let tag of song.tags">
+            #{{tag.name}},
+        </span>
+    </div>
+
+    <div class="row">
+        <button class="btn btn-primary" type="button" (click)="goBack()">Back</button>
+    </div>
+</div>

@@ -101,7 +101,7 @@ export class AddSongComponent implements OnInit {
         this.formSubmitted = true;
         this.errorMessage = '';
 
-        if (valid) {
+        if (valid && this.song.instrumentIds.length > 0 && this.song.tagIds.length > 0) {
             this.songsFacade
                 .add(this.song)
                 .subscribe(() => {

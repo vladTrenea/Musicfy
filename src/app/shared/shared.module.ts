@@ -7,6 +7,7 @@ import {
     MaterialModule, MdAutocompleteModule, MdCoreModule, MdInputModule,
     MdProgressSpinnerModule
 } from '@angular/material';
+import {Select2Module} from 'ng2-select2';
 
 import {AuthGuard} from './guards/auth.guard';
 import {AuthFacade} from './services/auth.facade';
@@ -18,7 +19,6 @@ import {AdminGuard} from './guards/admin.guard';
 import {EmptyValidator} from './validators/empty-validator.directive';
 import {ProgressSpinnerComponent} from './components/progress-spinner/progress-spinner.component';
 import {ModalComponent} from './modals/modal/modal.component';
-import {Select2Module} from 'ng2-select2';
 
 export function httpInterceptor(backend: XHRBackend, defaultOptions: RequestOptions, router: Router) {
     return new HttpInterceptor(backend, defaultOptions, router);

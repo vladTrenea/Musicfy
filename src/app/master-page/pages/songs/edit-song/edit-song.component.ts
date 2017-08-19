@@ -123,7 +123,7 @@ export class EditSongComponent implements OnInit {
         this.formSubmitted = true;
         this.errorMessage = '';
 
-        if (valid) {
+        if (valid && this.song.instrumentIds.length > 0 && this.song.tagIds.length > 0) {
             this.songsFacade
                 .update(this.song.id, this.song)
                 .subscribe(() => {
