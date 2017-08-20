@@ -13,7 +13,6 @@ import {ProfileComponent} from './master-page/pages/profile/profile.component';
 import {AppRoutingModule} from './app-routing.module';
 import {MenuComponent} from './master-page/menu/menu.component';
 import {MasterPageComponent} from './master-page/master-page.component';
-import {FaqComponent} from './master-page/pages/faq/faq.component';
 import {ArtistsModule} from './master-page/pages/artists/artists.module';
 import {SongsModule} from './master-page/pages/songs/songs.module';
 import {AppSharedService} from './shared/services/app-shared.service';
@@ -28,8 +27,7 @@ import {TagsModule} from './master-page/pages/tags/tags.module';
         ErrorComponent,
         ProfileComponent,
         MenuComponent,
-        MasterPageComponent,
-        FaqComponent
+        MasterPageComponent
     ],
     imports: [
         BrowserModule,

@@ -37,11 +37,6 @@ const routes: Routes = [
                 canActivate: [AuthGuard]
             },
             {
-                path: 'faq',
-                component: FaqComponent,
-                canActivate: [AuthGuard]
-            },
-            {
                 path: 'instruments',
                 loadChildren: 'app/master-page/pages/instruments/instruments.module#InstrumentsModule',
                 canActivate: [AdminGuard]
