@@ -9,6 +9,7 @@ export const config = {
         artistsEndpoint: `${apiBaseUrl}/artists`,
         songsEndpoint: `${apiBaseUrl}/songs`,
         songsPreferenceEndpoint: `${apiBaseUrl}/songs/song_id/preference`,
+        songRecommendationsEndpoint: `${apiBaseUrl}/songs/song_id/recommendations`,
         instrumentsEndpoint: `${apiBaseUrl}/instruments`,
         songCategoriesEndpoint: `${apiBaseUrl}/songs/categories`,
         tagsEndpoint: `${apiBaseUrl}/tags`
@@ -36,6 +37,7 @@ export const config = {
             view: 'view'
         },
         sections: {
+            discover: 'Discover',
             dashboard: 'Dashboard',
             artists: 'Artists',
             songs: 'Songs',

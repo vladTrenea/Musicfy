@@ -29,6 +29,9 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
+            <li [ngClass]="{'active': sections.discover === section}">
+                <a routerLink="/discover"><i class="fa fa-podcast" aria-hidden="true"></i>  Discover</a>
+            </li>
             <li [ngClass]="{'active': sections.dashboard === section}">
                 <a routerLink="/profile"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>

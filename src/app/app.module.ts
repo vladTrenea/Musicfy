@@ -19,6 +19,7 @@ import {AppSharedService} from './shared/services/app-shared.service';
 import {InstrumentsModule} from './master-page/pages/instruments/instruments.module';
 import {SongCategoriesModule} from './master-page/pages/song-categories/song-categories.module';
 import {TagsModule} from './master-page/pages/tags/tags.module';
+import {DiscoverComponent} from './master-page/pages/discover/discover.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import {TagsModule} from './master-page/pages/tags/tags.module';
         ErrorComponent,
         ProfileComponent,
         MenuComponent,
-        MasterPageComponent
+        MasterPageComponent,
+        DiscoverComponent
     ],
     imports: [
         BrowserModule,

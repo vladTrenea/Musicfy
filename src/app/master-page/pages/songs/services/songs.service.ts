@@ -10,6 +10,7 @@ import {config} from '../../../../config/configs';
 import {SongItemModel} from '../models/song-item.model';
 import {AddEditSongModel} from '../models/add-edit-song.model';
 import {SongModel} from '../models/song.model';
+import {SongRecommendationModel} from '../models/song-recommendation.model';
 
 @Injectable()
 export class SongsService extends BaseService {
@@ -80,6 +81,17 @@ export class SongsService extends BaseService {
         url = url.replace(/song_id/, id);
 
         return this.http.post(url, null, requestOpt)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
+    }
+
+    getSimilarSongs(id: string): Observable<SongRecommendationModel[]> {
+        const requestOpt = this.createAuthRequestOptions();
+
+        let url = config.apiEndpoints.songRecommendationsEndpoint;
+        url = url.replace(/song_id/, id);
+
+        return this.http.get(url, requestOpt)
             .map(response => response.json())
             .catch(error => this.handleError(error));
     }

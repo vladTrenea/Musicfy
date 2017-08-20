@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 
 import {SongModel} from '../models/song.model';
@@ -9,6 +9,7 @@ import {PageChangeEvent} from '../../../../shared/models/page-change-event.model
 import {config} from '../../../../config/configs';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {VideoUtils} from '../../../../shared/utils/video.utils';
+import {SongRecommendationModel} from '../models/song-recommendation.model';
 
 @Component({
     selector: 'app-view-song',
@@ -22,9 +23,13 @@ export class ViewSongComponent implements OnInit {
     videoUrl: SafeResourceUrl;
     isDataLoading: boolean;
 
+    recommendations: SongRecommendationModel[] = [];
+    areRecommendationsLoading: boolean;
+
     constructor(private sharedService: AppSharedService,
                 private songsFacade: SongsFacade,
                 private location: Location,
+                private router: Router,
                 private route: ActivatedRoute,
                 private sanitizer: DomSanitizer) {
         sharedService.emitPageChange(
@@ -52,6 +57,16 @@ export class ViewSongComponent implements OnInit {
                     this.isSongLiked = isSongLiked;
                 })
                 .subscribe();
+
+            this.areRecommendationsLoading = true;
+            this.songsFacade.getSimilarSongs(id)
+                .map((songs: SongRecommendationModel[]) => {
+                    this.recommendations = songs;
+                })
+                .finally(() => {
+                    this.areRecommendationsLoading = false;
+                })
+                .subscribe();
         });
     }
 
@@ -65,5 +80,9 @@ export class ViewSongComponent implements OnInit {
 
     goBack(): void {
         this.location.back();
+    }
+
+    goToSong(id: string): void {
+        this.router.navigate([`songs/view/${id}`]);
     }
 }

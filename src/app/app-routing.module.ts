@@ -4,10 +4,10 @@ import {NgModule} from '@angular/core';
 import {LoginComponent} from './login/login.component';
 import {ProfileComponent} from './master-page/pages/profile/profile.component';
 import {MasterPageComponent} from './master-page/master-page.component';
-import {FaqComponent} from './master-page/pages/faq/faq.component';
 import {AuthGuard} from './shared/guards/auth.guard';
 import {ErrorComponent} from './error/error.component';
 import {AdminGuard} from './shared/guards/admin.guard';
+import {DiscoverComponent} from './master-page/pages/discover/discover.component';
 
 const routes: Routes = [
     {
@@ -25,6 +25,10 @@ const routes: Routes = [
             {
                 path: 'profile',
                 component: ProfileComponent
+            },
+            {
+                path: 'discover',
+                component: DiscoverComponent
             },
             {
                 path: 'artists',
