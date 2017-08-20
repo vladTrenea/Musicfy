@@ -15,6 +15,7 @@ import {ArtistModel} from '../models/artist.model';
 export class ViewArtistComponent implements OnInit {
 
     artist: ArtistModel;
+    isDataLoading: boolean;
 
     constructor(private sharedService: AppSharedService,
                 private artistsFacade: ArtistsFacade,
@@ -28,9 +29,13 @@ export class ViewArtistComponent implements OnInit {
         this.route.params.subscribe(params => {
             const id = params['id'];
 
+            this.isDataLoading = true;
             this.artistsFacade.getArtist(id)
                 .map((artist: ArtistModel) => {
                     this.artist = artist;
+                })
+                .finally(() => {
+                    this.isDataLoading = false;
                 })
                 .subscribe();
         });

@@ -9,64 +9,58 @@
     <div *ngFor="let item of pagination.items; let i = index">
         <div class="row artist-row" *ngIf="i % 3 === 0">
             <article class="col-lg-4 col-md-4 col-sm-4" *ngIf="i < pagination.items.length">
-                <div>
+                <div class="artist-item-image" (click)="goToViewArtist(pagination.items[i].id)">
                     <img src="./assets/img/artistImage.jpg" class="img-fluid img-thumbnail"/>
                 </div>
                 <div class="artist-item-info">
                     <span class="artist-item-name">{{pagination.items[i].name}}</span>
-                    <span class="action-item">
-                    <i class="fa fa-eye" mdTooltip="View" aria-hidden="true"
-                       (click)="goToViewArtist(pagination.items[i].id)"></i>
-                </span>
-                    <span class="action-item">
-                    <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true"
-                       (click)="goToEditArtist(pagination.items[i].id)"></i>
-                </span>
-                    <span class="action-item">
-                    <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true"
-                       (click)="onDeleteArtistClick(pagination.items[i].id)"></i>
-                </span>
+                    <span *ngIf="userAuthorization?.isAdmin">
+                        <span class="action-item">
+                            <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true"
+                           (click)="goToEditArtist(pagination.items[i].id)"></i>
+                        </span>
+                        <span class="action-item">
+                            <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true"
+                            (click)="onDeleteArtistClick(pagination.items[i].id)"></i>
+                        </span>
+                    </span>
                 </div>
             </article>
 
             <article class="col-lg-4 col-md-4 col-sm-4" *ngIf="i + 1 < pagination.items.length">
-                <div>
+                <div class="artist-item-image" (click)="goToViewArtist(pagination.items[i + 1].id)">
                     <img src="./assets/img/artistImage.jpg" class="img-fluid img-thumbnail"/>
                 </div>
                 <div class="artist-item-info">
                     <span class="artist-item-name">{{pagination.items[i+1].name}}</span>
-                    <span class="action-item">
-                        <i class="fa fa-eye" mdTooltip="View" aria-hidden="true"
-                           (click)="goToViewArtist(pagination.items[i+1].id)"></i>
-                    </span>
-                    <span class="action-item">
-                        <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true"
-                           (click)="goToEditArtist(pagination.items[i+1].id)"></i>
-                    </span>
-                    <span class="action-item">
-                        <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true"
-                           (click)="onDeleteArtistClick(pagination.items[i+1].id)"></i>
+                    <span *ngIf="userAuthorization?.isAdmin">
+                        <span class="action-item">
+                            <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true"
+                               (click)="goToEditArtist(pagination.items[i+1].id)"></i>
+                        </span>
+                        <span class="action-item">
+                            <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true"
+                               (click)="onDeleteArtistClick(pagination.items[i+1].id)"></i>
+                        </span>
                     </span>
                 </div>
             </article>
 
             <article class="col-lg-4 col-md-4 col-sm-4" *ngIf="i + 2 < pagination.items.length">
-                <div>
+                <div class="artist-item-image" (click)="goToViewArtist(pagination.items[i + 2].id)">
                     <img src="./assets/img/artistImage.jpg" class="img-fluid img-thumbnail"/>
                 </div>
                 <div class="artist-item-info">
                     <span class="artist-item-name">{{pagination.items[i+2].name}}</span>
-                    <span class="action-item">
-                        <i class="fa fa-eye" mdTooltip="View" aria-hidden="true"
-                           (click)="goToViewArtist(pagination.items[i+2].id)"></i>
-                    </span>
-                    <span class="action-item">
-                        <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true"
-                           (click)="goToEditArtist(pagination.items[i+2].id)"></i>
-                    </span>
-                    <span class="action-item">
-                        <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true"
-                           (click)="onDeleteArtistClick(pagination.items[i+2].id)"></i>
+                    <span *ngIf="userAuthorization?.isAdmin">
+                        <span class="action-item">
+                            <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true"
+                               (click)="goToEditArtist(pagination.items[i+2].id)"></i>
+                        </span>
+                        <span class="action-item">
+                            <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true"
+                               (click)="onDeleteArtistClick(pagination.items[i+2].id)"></i>
+                        </span>
                     </span>
                 </div>
             </article>

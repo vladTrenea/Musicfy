@@ -24,11 +24,13 @@ const routes: Routes = [
         children: [
             {
                 path: 'profile',
-                component: ProfileComponent
+                component: ProfileComponent,
+                canActivate: [AuthGuard]
             },
             {
                 path: 'discover',
-                component: DiscoverComponent
+                component: DiscoverComponent,
+                canActivate: [AuthGuard]
             },
             {
                 path: 'artists',

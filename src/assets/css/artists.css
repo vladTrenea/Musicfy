@@ -6,6 +6,14 @@
     margin-bottom: 25px;
 }
 
+.artist-item-image {
+    width:80%;
+    height:80%;
+    cursor:pointer;
+    display: block;
+    margin: 0 auto;
+}
+
 .artist-item-name {
     font-size: 18px;
 }

@@ -77,8 +77,9 @@ export class ListSongComponent implements OnInit {
             .map((pagination: PaginationModel<SongItemModel>) => {
                 this.pagination = pagination;
             })
-            .subscribe(() => {
+            .finally(() => {
                 this.isDataLoading = false;
-            });
+            })
+            .subscribe();
     }
 }

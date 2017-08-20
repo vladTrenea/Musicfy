@@ -1,6 +1,22 @@
-<div *ngIf="artist">
-    <p>{{artist.name}}</p>
-    <div>
-        {{artist.description}}
+<app-progress-spinner *ngIf="isDataLoading"></app-progress-spinner>
+<div *ngIf="artist && !isDataLoading">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            {{artist.name}}
+        </div>
+    </div>
+    <br/>
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            {{artist.description}}
+        </div>
+    </div>
+    <br/>
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <button class="btn btn-primary" type="button" (click)="goToList()">Back</button>
+        </div>
     </div>
 </div>
