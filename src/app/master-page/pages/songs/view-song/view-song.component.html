@@ -1,7 +1,10 @@
 <app-progress-spinner *ngIf="isDataLoading"></app-progress-spinner>
 <div *ngIf="song && !isDataLoading">
     <div class="row">
-        <h3>{{song.name}}</h3>
+        <h3>{{song.name}}
+            <i class="fa fa-thumbs-up action-item" mdTooltip="Unlike" aria-hidden="true" *ngIf="isSongLiked" (click)="toggleUserSongPreference()"></i>
+            <i class="fa fa-thumbs-o-up action-item" mdTooltip="Like" aria-hidden="true" *ngIf="!isSongLiked" (click)="toggleUserSongPreference()"></i>
+        </h3>
     </div>
     <div class="row">
         <iframe title="YouTube video player"

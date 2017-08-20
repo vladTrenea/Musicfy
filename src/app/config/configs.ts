@@ -8,6 +8,7 @@ export const config = {
         logoutEndpoint: `${apiBaseUrl}/account/logout`,
         artistsEndpoint: `${apiBaseUrl}/artists`,
         songsEndpoint: `${apiBaseUrl}/songs`,
+        songsPreferenceEndpoint: `${apiBaseUrl}/songs/song_id/preference`,
         instrumentsEndpoint: `${apiBaseUrl}/instruments`,
         songCategoriesEndpoint: `${apiBaseUrl}/songs/categories`,
         tagsEndpoint: `${apiBaseUrl}/tags`

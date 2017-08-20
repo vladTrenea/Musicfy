@@ -61,4 +61,26 @@ export class SongsService extends BaseService {
             .map(response => response.json())
             .catch(error => this.handleError(error));
     }
+
+    getSongUserPreference(id: string): Observable<boolean> {
+        const requestOpt = this.createAuthRequestOptions();
+
+        let url = config.apiEndpoints.songsPreferenceEndpoint;
+        url = url.replace(/song_id/, id);
+
+        return this.http.get(url, requestOpt)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
+    }
+
+    toggleSongUserPreference(id: string): Observable<boolean> {
+        const requestOpt = this.createAuthRequestOptions();
+
+        let url = config.apiEndpoints.songsPreferenceEndpoint;
+        url = url.replace(/song_id/, id);
+
+        return this.http.post(url, null, requestOpt)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
+    }
 }

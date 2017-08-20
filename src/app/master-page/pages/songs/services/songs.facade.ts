@@ -46,6 +46,14 @@ export class SongsFacade {
         return this.songsService.delete(id);
     }
 
+    getSongUserPreference(id: string): Observable<boolean> {
+        return this.songsService.getSongUserPreference(id);
+    }
+
+    toggleSongUserPreference(id: string): Observable<boolean> {
+        return this.songsService.toggleSongUserPreference(id);
+    }
+
     getAllArtists(): Observable<ArtistModel[]> {
         return this.artistsService.getAll();
     }

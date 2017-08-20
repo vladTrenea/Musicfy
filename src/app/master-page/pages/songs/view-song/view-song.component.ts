@@ -8,6 +8,7 @@ import {SongsFacade} from '../services/songs.facade';
 import {PageChangeEvent} from '../../../../shared/models/page-change-event.model';
 import {config} from '../../../../config/configs';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {VideoUtils} from '../../../../shared/utils/video.utils';
 
 @Component({
     selector: 'app-view-song',
@@ -17,6 +18,7 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 export class ViewSongComponent implements OnInit {
 
     song: SongModel;
+    isSongLiked: boolean;
     videoUrl: SafeResourceUrl;
     isDataLoading: boolean;
 
@@ -37,14 +39,28 @@ export class ViewSongComponent implements OnInit {
             this.songsFacade.getSongById(id)
                 .map((song: SongModel) => {
                     this.song = song;
-                    this.song.url = this.song.url.replace('watch?v=', 'embed/');
+                    this.song.url = VideoUtils.convertYoutubeUrlToEmbed(this.song.url);
                     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.song.url);
                 })
                 .finally(() => {
                     this.isDataLoading = false;
                 })
                 .subscribe();
+
+            this.songsFacade.getSongUserPreference(id)
+                .map((isSongLiked: boolean) => {
+                    this.isSongLiked = isSongLiked;
+                })
+                .subscribe();
         });
+    }
+
+    toggleUserSongPreference() {
+        this.songsFacade.toggleSongUserPreference(this.song.id)
+            .map((isSongLiked: boolean) => {
+                this.isSongLiked = isSongLiked;
+            })
+            .subscribe();
     }
 
     goBack(): void {
