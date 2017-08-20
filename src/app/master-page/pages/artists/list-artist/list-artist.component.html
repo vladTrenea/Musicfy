@@ -7,78 +7,104 @@
 </div>
 <div *ngIf="pagination && pagination.items.length > 0 && !isDataLoading" class="page-container">
     <div *ngFor="let item of pagination.items; let i = index">
-        <div class="row" *ngIf="i % 3 === 0">
-            <article class="col-lg-4 artist-list-item" *ngIf="i < pagination.items.length">
-                {{pagination.items[i].name}}
-                <span class="action-item">
-                    <i class="fa fa-eye" mdTooltip="View" aria-hidden="true" (click)="goToViewArtist(pagination.items[i].id)"></i>
+        <div class="row artist-row" *ngIf="i % 3 === 0">
+            <article class="col-lg-4 col-md-4 col-sm-4" *ngIf="i < pagination.items.length">
+                <div>
+                    <img src="./assets/img/artistImage.jpg" class="img-fluid img-thumbnail"/>
+                </div>
+                <div class="artist-item-info">
+                    <span class="artist-item-name">{{pagination.items[i].name}}</span>
+                    <span class="action-item">
+                    <i class="fa fa-eye" mdTooltip="View" aria-hidden="true"
+                       (click)="goToViewArtist(pagination.items[i].id)"></i>
                 </span>
-                <span class="action-item">
-                    <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true" (click)="goToEditArtist(pagination.items[i].id)"></i>
+                    <span class="action-item">
+                    <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true"
+                       (click)="goToEditArtist(pagination.items[i].id)"></i>
                 </span>
-                <span class="action-item">
-                    <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true" (click)="onDeleteArtistClick(pagination.items[i].id)"></i>
+                    <span class="action-item">
+                    <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true"
+                       (click)="onDeleteArtistClick(pagination.items[i].id)"></i>
                 </span>
+                </div>
             </article>
 
-            <article class="col-lg-4 artist-list-item" *ngIf="i + 1 < pagination.items.length">
-                {{pagination.items[i+1].name}}
-                <span class="action-item">
-                    <i class="fa fa-eye" mdTooltip="View" aria-hidden="true" (click)="goToViewArtist(pagination.items[i+1].id)"></i>
-                </span>
-                <span class="action-item">
-                    <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true" (click)="goToEditArtist(pagination.items[i+1].id)"></i>
-                </span>
-                <span class="action-item">
-                    <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true" (click)="onDeleteArtistClick(pagination.items[i+1].id)"></i>
-                </span>
+            <article class="col-lg-4 col-md-4 col-sm-4" *ngIf="i + 1 < pagination.items.length">
+                <div>
+                    <img src="./assets/img/artistImage.jpg" class="img-fluid img-thumbnail"/>
+                </div>
+                <div class="artist-item-info">
+                    <span class="artist-item-name">{{pagination.items[i+1].name}}</span>
+                    <span class="action-item">
+                        <i class="fa fa-eye" mdTooltip="View" aria-hidden="true"
+                           (click)="goToViewArtist(pagination.items[i+1].id)"></i>
+                    </span>
+                    <span class="action-item">
+                        <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true"
+                           (click)="goToEditArtist(pagination.items[i+1].id)"></i>
+                    </span>
+                    <span class="action-item">
+                        <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true"
+                           (click)="onDeleteArtistClick(pagination.items[i+1].id)"></i>
+                    </span>
+                </div>
             </article>
 
-            <article class="col-lg-4 artist-list-item" *ngIf="i + 2 < pagination.items.length">
-                {{pagination.items[i+2].name}}
-                <span class="action-item">
-                    <i class="fa fa-eye" mdTooltip="View" aria-hidden="true" (click)="goToViewArtist(pagination.items[i+2].id)"></i>
-                </span>
-                <span class="action-item">
-                    <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true" (click)="goToEditArtist(pagination.items[i+2].id)"></i>
-                </span>
-                <span class="action-item">
-                    <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true" (click)="onDeleteArtistClick(pagination.items[i+2].id)"></i>
-                </span>
+            <article class="col-lg-4 col-md-4 col-sm-4" *ngIf="i + 2 < pagination.items.length">
+                <div>
+                    <img src="./assets/img/artistImage.jpg" class="img-fluid img-thumbnail"/>
+                </div>
+                <div class="artist-item-info">
+                    <span class="artist-item-name">{{pagination.items[i+2].name}}</span>
+                    <span class="action-item">
+                        <i class="fa fa-eye" mdTooltip="View" aria-hidden="true"
+                           (click)="goToViewArtist(pagination.items[i+2].id)"></i>
+                    </span>
+                    <span class="action-item">
+                        <i class="fa fa-pencil" mdTooltip="Edit" aria-hidden="true"
+                           (click)="goToEditArtist(pagination.items[i+2].id)"></i>
+                    </span>
+                    <span class="action-item">
+                        <i class="fa fa-trash-o" mdTooltip="Delete" aria-hidden="true"
+                           (click)="onDeleteArtistClick(pagination.items[i+2].id)"></i>
+                    </span>
+                </div>
             </article>
         </div>
     </div>
 
-    <ul class="pagination">
-        <li class="page-item" [ngClass]="{'disabled': pagination.page === 1}" (click)="onArtistPageClick(1)">
+    <div class="row">
+        <ul class="pagination">
+            <li class="page-item" [ngClass]="{'disabled': pagination.page === 1}" (click)="onArtistPageClick(1)">
             <span aria-label="First" class="page-link" tabindex="-1">
                 <span aria-hidden="true">««</span>
             </span>
-        </li>
+            </li>
 
-        <li class="page-item" [ngClass]="{'disabled': pagination.page === 1}">
+            <li class="page-item" [ngClass]="{'disabled': pagination.page === 1}">
             <span aria-label="Previous" class="page-link" tabindex="-1"
                   (click)="onArtistPageClick(pagination.page - 1)">
                 <span aria-hidden="true">«</span>
             </span>
-        </li>
+            </li>
 
-        <li class="page-item active">
+            <li class="page-item active">
             <span aria-label="Current" class="page-link" tabindex="-1">
                 <span aria-hidden="true">{{pagination.page}}</span>
             </span>
-        </li>
+            </li>
 
-        <li class="page-item" [ngClass]="{'disabled': pagination.page >= pagination.totalPages}">
+            <li class="page-item" [ngClass]="{'disabled': pagination.page >= pagination.totalPages}">
             <span aria-label="Next" class="page-link" (click)="onArtistPageClick(pagination.page + 1)">
                 <span aria-hidden="true">»</span>
             </span>
-        </li>
+            </li>
 
-        <li class="page-item" [ngClass]="{'disabled': pagination.page >= pagination.totalPages}">
+            <li class="page-item" [ngClass]="{'disabled': pagination.page >= pagination.totalPages}">
             <span aria-label="Last" class="page-link" tabindex="-1" (click)="onArtistPageClick(pagination.totalPages)">
                 <span aria-hidden="true">»»</span>
             </span>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
 </div>

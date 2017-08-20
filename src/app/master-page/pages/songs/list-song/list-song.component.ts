@@ -37,7 +37,7 @@ export class ListSongComponent implements OnInit {
     ngOnInit() {
         this.loadSongs(1);
 
-        this.authFacade.getCurrentUserAuthorization();
+        this.userAuthorization = this.authFacade.getCurrentUserAuthorization();
     }
 
     goToAddSong() {

@@ -1,0 +1,11 @@
+.song-row {
+    margin-bottom: 25px;
+}
+
+.song-item-name {
+    font-size: 18px;
+}
+
+.song-item-info {
+    text-align:center;
+}

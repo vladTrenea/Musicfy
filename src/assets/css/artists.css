@@ -1,3 +1,15 @@
 .artist-list-item {
     border:black;
 }
+
+.artist-row {
+    margin-bottom: 25px;
+}
+
+.artist-item-name {
+    font-size: 18px;
+}
+
+.artist-item-info {
+    text-align:center;
+}

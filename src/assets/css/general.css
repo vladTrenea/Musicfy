@@ -22,8 +22,29 @@
 
 .action-item {
     cursor: pointer;
+    padding: 0px 2px 0px 2px;
 }
 
 .select2-container {
     width: 100% !important;
 }
+
+.page-container .pagination {
+    float:right;
+    position:relative;
+    left:-45%;
+    text-align:left;
+}
+
+.page-container .pagination ul {
+    list-style:none;
+    position:relative;
+    left:45%;
+}
+
+.page-container .pagination li {
+    float:left;
+    position:relative;
+}
+
+
