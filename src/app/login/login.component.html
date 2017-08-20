@@ -18,7 +18,6 @@
                 <div class="input-error" *ngIf="formSubmitted && password.errors">
                     Password is required
                 </div>
-                <br/>
 
                 <button type="button" class="btn btn-default btn-block btn-custom" (click)="login(loginForm.form.valid)">
                     Login
@@ -28,6 +27,7 @@
                 <div class="input-error" *ngIf="errorMessage">
                     {{errorMessage}}
                 </div>
+                <br/>
             </form>
         </div><!-- /.controls -->
     </div><!-- /#login-box -->
