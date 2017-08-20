@@ -59,25 +59,32 @@
     </div>
 
     <div>
-        <article class="col-lg-4 col-md-4 col-sm-4" *ngIf="recommendations?.length > 0">
+        <article class="col-lg-3 col-md-3 col-sm-3" *ngIf="recommendations?.length > 0">
             <div class="recommendation-image" (click)="goToSong(recommendations[0].id)">
                 <img src="./assets/img/songNote.png" class="img-fluid img-thumbnail"/>
             </div>
             <p class="recommendation-info">{{recommendations[0].artist.name}} - {{recommendations[0].name}}</p>
         </article>
 
-        <article class="col-lg-4 col-md-4 col-sm-4" *ngIf="recommendations?.length > 1">
-            <div class="recommendation-image" (click)="goToSong(recommendations[0].id)">
+        <article class="col-lg-3 col-md-3 col-sm-3" *ngIf="recommendations?.length > 1">
+            <div class="recommendation-image" (click)="goToSong(recommendations[1].id)">
                 <img src="./assets/img/songNote.png" class="img-fluid img-thumbnail"/>
             </div>
             <p class="recommendation-info">{{recommendations[1].artist.name}} - {{recommendations[1].name}}</p>
         </article>
 
-        <article class="col-lg-4 col-md-4 col-sm-4" *ngIf="recommendations?.length > 2">
-            <div class="recommendation-image" (click)="goToSong(recommendations[0].id)">
+        <article class="col-lg-3 col-md-3 col-sm-3" *ngIf="recommendations?.length > 2">
+            <div class="recommendation-image" (click)="goToSong(recommendations[2].id)">
                 <img src="./assets/img/songNote.png" class="img-fluid img-thumbnail"/>
             </div>
             <p class="recommendation-info">{{recommendations[2].artist.name}} - {{recommendations[2].name}}</p>
+        </article>
+
+        <article class="col-lg-3 col-md-3 col-sm-3" *ngIf="recommendations?.length > 3">
+            <div class="recommendation-image" (click)="goToSong(recommendations[3].id)">
+                <img src="./assets/img/songNote.png" class="img-fluid img-thumbnail"/>
+            </div>
+            <p class="recommendation-info">{{recommendations[3].artist.name}} - {{recommendations[3].name}}</p>
         </article>
     </div>
 </div>

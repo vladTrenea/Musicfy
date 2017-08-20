@@ -3,7 +3,7 @@
 }
 
 .song-item-image {
-    width:80%;
+    width:70%;
     height:80%;
     cursor:pointer;
     display: block;
@@ -23,14 +23,14 @@
 }
 
 .recommendations-title {
-    font-size:17px;
+    font-size:18px;
 }
 .song-recommendations-container {
     margin-top: 30px;
 }
 
 .recommendation-image {
-    width:80%;
+    width:65%;
     height:70%;
     cursor:pointer;
 }
