@@ -7,7 +7,9 @@
 </div>
 
 <div *ngIf="!pagination && isDataLoading">
-    <app-progress-spinner></app-progress-spinner>
+    <div class="col-lg-5 col-md-5 col-sm-5"></div>
+    <app-progress-spinner class="col-lg-2 col-md-2 col-sm-2"></app-progress-spinner>
+    <div class="col-lg-5 col-md-5 col-sm-5"></div>
 </div>
 <div *ngIf="pagination && pagination.items.length > 0 && !isDataLoading" class="page-container">
     <div *ngFor="let item of pagination.items; let i = index">

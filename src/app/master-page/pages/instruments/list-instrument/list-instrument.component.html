@@ -3,7 +3,9 @@
 </div>
 
 <div *ngIf="!instruments && isDataLoading">
-    <app-progress-spinner></app-progress-spinner>
+    <div class="col-lg-5 col-md-5 col-sm-5"></div>
+    <app-progress-spinner class="col-lg-2 col-md-2 col-sm-2"></app-progress-spinner>
+    <div class="col-lg-5 col-md-5 col-sm-5"></div>
 </div>
 
 <div *ngIf="instruments && !isDataLoading" class="page-container">
