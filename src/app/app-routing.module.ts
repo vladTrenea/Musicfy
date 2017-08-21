@@ -22,11 +22,11 @@ const routes: Routes = [
         path: '',
         component: MasterPageComponent,
         children: [
-            {
-                path: 'profile',
-                component: ProfileComponent,
-                canActivate: [AuthGuard]
-            },
+            // {
+            //     path: 'profile',
+            //     component: ProfileComponent,
+            //     canActivate: [AuthGuard]
+            // },
             {
                 path: 'discover',
                 component: DiscoverComponent,
