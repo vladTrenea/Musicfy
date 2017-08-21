@@ -6,6 +6,7 @@ export const config = {
     apiEndpoints: {
         loginEndpoint: `${apiBaseUrl}/account/login`,
         logoutEndpoint: `${apiBaseUrl}/account/logout`,
+        discoverEndpoint: `${apiBaseUrl}/songs/discover`,
         artistsEndpoint: `${apiBaseUrl}/artists`,
         songsEndpoint: `${apiBaseUrl}/songs`,
         songsPreferenceEndpoint: `${apiBaseUrl}/songs/song_id/preference`,
@@ -56,6 +57,9 @@ export const config = {
         mode: 'indeterminate'
     },
     constants: {
+        discoverPage: {
+            recommendationsCount: 4
+        },
         viewSongPage: {
             recommendationsCount: 4
         }

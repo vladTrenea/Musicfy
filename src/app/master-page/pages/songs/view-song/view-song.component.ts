@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 import {SongModel} from '../models/song.model';
 import {AppSharedService} from '../../../../shared/services/app-shared.service';
 import {SongsFacade} from '../services/songs.facade';
 import {PageChangeEvent} from '../../../../shared/models/page-change-event.model';
 import {config} from '../../../../config/configs';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {VideoUtils} from '../../../../shared/utils/video.utils';
-import {SongRecommendationModel} from '../models/song-recommendation.model';
+import {SongItemModel} from '../models/song-item.model';
 
 @Component({
     selector: 'app-view-song',
@@ -23,7 +23,7 @@ export class ViewSongComponent implements OnInit {
     videoUrl: SafeResourceUrl;
     isDataLoading: boolean;
 
-    recommendations: SongRecommendationModel[] = [];
+    recommendations: SongItemModel[] = [];
     areRecommendationsLoading: boolean;
 
     constructor(private sharedService: AppSharedService,
@@ -59,8 +59,8 @@ export class ViewSongComponent implements OnInit {
                 .subscribe();
 
             this.areRecommendationsLoading = true;
-            this.songsFacade.getSimilarSongs(id, config.constants.viewSongPage.recommendationsCount)
-                .map((songs: SongRecommendationModel[]) => {
+            this.songsFacade.getSimilarSongsById(id, config.constants.viewSongPage.recommendationsCount)
+                .map((songs: SongItemModel[]) => {
                     this.recommendations = songs;
                 })
                 .finally(() => {

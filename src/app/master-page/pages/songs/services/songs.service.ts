@@ -10,7 +10,7 @@ import {config} from '../../../../config/configs';
 import {SongItemModel} from '../models/song-item.model';
 import {AddEditSongModel} from '../models/add-edit-song.model';
 import {SongModel} from '../models/song.model';
-import {SongRecommendationModel} from '../models/song-recommendation.model';
+import {SongsDiscoverModel} from '../models/songs-discover.model';
 
 @Injectable()
 export class SongsService extends BaseService {
@@ -85,7 +85,7 @@ export class SongsService extends BaseService {
             .catch(error => this.handleError(error));
     }
 
-    getSimilarSongs(id: string, count: number): Observable<SongRecommendationModel[]> {
+    getSimilarSongsById(id: string, count: number): Observable<SongItemModel[]> {
         const requestOpt = this.createAuthRequestOptions();
 
         let params: URLSearchParams = new URLSearchParams();
@@ -96,6 +96,19 @@ export class SongsService extends BaseService {
         url = url.replace(/song_id/, id);
 
         return this.http.get(url, requestOpt)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
+    }
+
+    discoverSimilarSongs(title: string, count: number): Observable<SongsDiscoverModel> {
+        const requestOpt = this.createAuthRequestOptions();
+
+        const params: URLSearchParams = new URLSearchParams();
+        params.set('count', count.toString());
+        params.set('name', title);
+        requestOpt.params = params;
+
+        return this.http.get(config.apiEndpoints.discoverEndpoint, requestOpt)
             .map(response => response.json())
             .catch(error => this.handleError(error));
     }

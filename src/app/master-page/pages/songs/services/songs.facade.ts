@@ -14,7 +14,7 @@ import {AddEditSongModel} from '../models/add-edit-song.model';
 import {TagModel} from '../../tags/models/tag.model';
 import {TagsService} from '../../tags/services/tags.service';
 import {SongModel} from '../models/song.model';
-import {SongRecommendationModel} from '../models/song-recommendation.model';
+import {SongsDiscoverModel} from '../models/songs-discover.model';
 
 @Injectable()
 export class SongsFacade {
@@ -55,8 +55,12 @@ export class SongsFacade {
         return this.songsService.toggleSongUserPreference(id);
     }
 
-    getSimilarSongs(id: string, count: number): Observable<SongRecommendationModel[]> {
-        return this.songsService.getSimilarSongs(id, count);
+    getSimilarSongsById(id: string, count: number): Observable<SongItemModel[]> {
+        return this.songsService.getSimilarSongsById(id, count);
+    }
+
+    discoverSimilarSongs(title: string, count: number): Observable<SongsDiscoverModel> {
+        return this.songsService.discoverSimilarSongs(title, count);
     }
 
     getAllArtists(): Observable<ArtistModel[]> {

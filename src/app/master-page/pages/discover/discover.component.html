@@ -1,3 +1,94 @@
-<p>
-  discover works!
-</p>
+<div class="row">
+    <div class="discover-search-container">
+        <div class="col-lg-3 col-md-3 col-sm-3"></div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <p class="discover-search-title">Find similar songs in just one search:</p>
+            <div class="form-group input-group">
+                <input #searchInput="ngModel"  id="name" name="name" type="text" class="form-control"
+                       placeholder="Song title" [(ngModel)]="searchText">
+                <span class="input-group-btn" (click)="search()">
+                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+
+<div *ngIf="searchSubmitted">
+    <div *ngIf="isDataLoading">
+        <div class="col-lg-5 col-md-5 col-sm-5"></div>
+        <app-progress-spinner class="col-lg-2 col-md-2 col-sm-2"></app-progress-spinner>
+        <div class="col-lg-5 col-md-5 col-sm-5"></div>
+    </div>
+    <div *ngIf="!isDataLoading">
+        <div class="row">
+            <div *ngIf="!matchedSong">
+                <div class="col-lg-3 col-md-3 col-sm-3"></div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <p class="discover-no-search-result">No song matched your search. Please try again.</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"></div>
+            </div>
+
+            <div class="row" *ngIf="matchedSong">
+                <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                <article class="col-lg-4 col-md-4 col-sm-4">
+                    <div>
+                        <div class="song-item-image" (click)="goToViewSong(matchedSong.id)">
+                            <img src="./assets/img/songNote.png" class="img-fluid img-thumbnail"/>
+                        </div>
+                        <div class="song-item-info">
+                            <span class="song-item-name">{{matchedSong.artist.name}} - {{matchedSong.name}}</span>
+                        </div>
+                    </div>
+                </article>
+                <div class="col-lg-4 col-md-4 col-sm-4"></div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="songRecommendations?.length > 0">
+            <div class="row song-recommendations-container">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p class="recommendations-title">Similar songs:</p>
+                </div>
+
+                <div>
+                    <article class="col-lg-3 col-md-3 col-sm-3" *ngIf="songRecommendations?.length > 0">
+                        <div class="recommendation-image" (click)="goToViewSong(songRecommendations[0].id)">
+                            <img src="./assets/img/songNote.png" class="img-fluid img-thumbnail"/>
+                        </div>
+                        <p class="recommendation-info">{{songRecommendations[0].artist.name}} -
+                            {{songRecommendations[0].name}}</p>
+                    </article>
+
+                    <article class="col-lg-3 col-md-3 col-sm-3" *ngIf="songRecommendations?.length > 1">
+                        <div class="recommendation-image" (click)="goToViewSong(songRecommendations[1].id)">
+                            <img src="./assets/img/songNote.png" class="img-fluid img-thumbnail"/>
+                        </div>
+                        <p class="recommendation-info">{{songRecommendations[1].artist.name}} -
+                            {{songRecommendations[1].name}}</p>
+                    </article>
+
+                    <article class="col-lg-3 col-md-3 col-sm-3" *ngIf="songRecommendations?.length > 2">
+                        <div class="recommendation-image" (click)="goToViewSong(songRecommendations[2].id)">
+                            <img src="./assets/img/songNote.png" class="img-fluid img-thumbnail"/>
+                        </div>
+                        <p class="recommendation-info">{{songRecommendations[2].artist.name}} -
+                            {{songRecommendations[2].name}}</p>
+                    </article>
+
+                    <article class="col-lg-3 col-md-3 col-sm-3" *ngIf="songRecommendations?.length > 3">
+                        <div class="recommendation-image" (click)="goToSong(songRecommendations[3].id)">
+                            <img src="./assets/img/songNote.png" class="img-fluid img-thumbnail"/>
+                        </div>
+                        <p class="recommendation-info">{{songRecommendations[3].artist.name}} -
+                            {{songRecommendations[3].name}}</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

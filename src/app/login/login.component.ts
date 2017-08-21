@@ -25,7 +25,7 @@ export class LoginComponent {
         if (valid) {
             this.authFacade.login(this.loginModel).subscribe(
                 () => {
-                    this.router.navigate(['/songs']);
+                    this.router.navigate(['/discover']);
                 },
                 error => {
                     this.errorMessage = error.message;
