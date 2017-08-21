@@ -85,8 +85,12 @@ export class SongsService extends BaseService {
             .catch(error => this.handleError(error));
     }
 
-    getSimilarSongs(id: string): Observable<SongRecommendationModel[]> {
+    getSimilarSongs(id: string, count: number): Observable<SongRecommendationModel[]> {
         const requestOpt = this.createAuthRequestOptions();
+
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('count', count.toString());
+        requestOpt.params = params;
 
         let url = config.apiEndpoints.songRecommendationsEndpoint;
         url = url.replace(/song_id/, id);

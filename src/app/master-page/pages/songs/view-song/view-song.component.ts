@@ -59,7 +59,7 @@ export class ViewSongComponent implements OnInit {
                 .subscribe();
 
             this.areRecommendationsLoading = true;
-            this.songsFacade.getSimilarSongs(id)
+            this.songsFacade.getSimilarSongs(id, config.constants.viewSongPage.recommendationsCount)
                 .map((songs: SongRecommendationModel[]) => {
                     this.recommendations = songs;
                 })

@@ -54,5 +54,10 @@ export const config = {
     progressSpinner: {
         color: 'primary',
         mode: 'indeterminate'
+    },
+    constants: {
+        viewSongPage: {
+            recommendationsCount: 4
+        }
     }
 };

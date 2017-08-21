@@ -55,8 +55,8 @@ export class SongsFacade {
         return this.songsService.toggleSongUserPreference(id);
     }
 
-    getSimilarSongs(id: string): Observable<SongRecommendationModel[]> {
-        return this.songsService.getSimilarSongs(id);
+    getSimilarSongs(id: string, count: number): Observable<SongRecommendationModel[]> {
+        return this.songsService.getSimilarSongs(id, count);
     }
 
     getAllArtists(): Observable<ArtistModel[]> {
