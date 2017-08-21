@@ -47,4 +47,6 @@
     position:relative;
 }
 
-
+#page-wrapper {
+    min-height: 1000px !important;
+}
